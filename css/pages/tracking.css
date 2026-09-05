@@ -1,0 +1,192 @@
+.page-tracking .service-hero {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 32px;
+}
+.feedback-scene {
+  padding: 32px 22px;
+}
+.four-nodes {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.four-nodes li {
+  padding: 20px 8px;
+}
+.four-nodes .icon-shell {
+  width: 60px;
+  height: 60px;
+}
+.four-nodes svg {
+  width: 38px;
+  height: 38px;
+}
+.four-nodes strong {
+  font-size: 15px;
+}
+.four-nodes p {
+  font-size: 13px;
+  line-height: 20px;
+}
+.four-nodes li:not(:last-child)::after {
+  font-size: 22px;
+  left: calc(100% + 2px);
+}
+.feedback-caption {
+  text-align: center;
+  font-size: 14px;
+  line-height: 21px;
+  border: 2px solid color-mix(in srgb, var(--blue) 45%, white);
+  border-top: 0;
+  border-radius: 0 0 22px 22px;
+  margin: 0 30px;
+  padding: 24px 12px 12px;
+}
+.capability-grid .content-card {
+  text-align: center;
+}
+.yellow-panel {
+  background: var(--yellow-soft);
+}
+.automation-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: 20px 32px;
+  align-items: start;
+}
+.automation-grid {
+  grid-column: 2;
+  grid-row: 1/3;
+}
+.automation-grid .content-card {
+  display: flex;
+  gap: 16px;
+  padding: 22px;
+  align-items: flex-start;
+}
+.automation-grid .icon-shell {
+  width: 56px;
+  height: 56px;
+  margin: 0;
+}
+.automation-grid svg {
+  width: 34px;
+  height: 34px;
+}
+.automation-grid h3 {
+  font-size: 18px;
+  line-height: 25px;
+}
+.automation-grid p {
+  font-size: 14px;
+  line-height: 22px;
+}
+.ai-note {
+  font-size: 14px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  grid-column: 1;
+  grid-row: 2;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.ai-note .icon-shell {
+  width: 32px;
+  height: 32px;
+  background: none;
+}
+.page-tracking .faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: 48px;
+  align-items: start;
+}
+.page-tracking .faq .section-heading {
+  display: block;
+}
+.page-tracking .faq h2 {
+  margin-bottom: 16px;
+}
+@media (max-width: 1199px) {
+  .page-tracking .service-hero,
+  .automation-layout,
+  .page-tracking .faq-layout {
+    grid-template-columns: 1fr;
+  }
+  .capability-grid {
+    grid-template-columns: 1fr;
+  }
+  .capability-grid .content-card {
+    text-align: left;
+    display: flex;
+    gap: 24px;
+  }
+  .capability-grid .icon-shell {
+    margin: 0;
+  }
+  .automation-grid {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .ai-note {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .page-tracking .faq-layout {
+    gap: 16px;
+  }
+  .four-nodes strong {
+    font-size: 17px;
+  }
+  .four-nodes p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 767px) {
+  .feedback-scene {
+    padding: 20px 16px;
+  }
+  .four-nodes .icon-shell {
+    width: 48px;
+    height: 48px;
+  }
+  .four-nodes strong {
+    font-size: 16px;
+  }
+  .four-nodes li:not(:last-child)::after {
+    left: calc(50% - 8px);
+    font-size: 24px;
+  }
+  .feedback-caption {
+    border: 0;
+    margin: 20px 0 0;
+    padding: 0;
+  }
+  .automation-grid .content-card {
+    padding: 20px 16px;
+  }
+  .automation-grid .icon-shell {
+    width: 48px;
+    height: 48px;
+  }
+  .automation-grid h3 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .automation-grid p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .capability-grid .content-card {
+    gap: 16px;
+    background: var(--soft);
+  }
+  .page-tracking #capabilities {
+    background: white;
+    padding-top: 0;
+  }
+  .page-tracking #automation {
+    padding-top: 0;
+  }
+}

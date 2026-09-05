@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en" data-page-title="Tracking &amp; Automation">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Tracking &amp; Automation. Google Ads management, measurement and automation built around your business goals."
+    />
+    <title>Tracking &amp; Automation | SIGNAL</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages/tracking.css" />
+    <link rel="preload" href="assets/fonts/Inter.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="css/visuals.css" />
+    <link rel="stylesheet" href="css/pages/service-expanded.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body class="page-tracking">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html" data-logo
+          ><span data-brand="name">SIGNAL</span
+          ><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span
+        ></a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <div class="services-menu">
+            <button
+              class="nav-button"
+              type="button"
+              aria-expanded="false"
+              aria-controls="services-links"
+            >
+              Services
+              <svg class="chevron" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+                <path
+                  d="m6 9 6 6 6-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div id="services-links" class="services-links" hidden>
+              <a href="google-ads.html">Google Ads Management</a
+              ><a href="tracking-automation.html">Tracking &amp; Automation</a>
+            </div>
+          </div>
+          <a href="index.html#process">How we work</a><a href="results.html">Results</a
+          ><a href="index.html#about">About</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button" data-link="audit" href="audit.html"
+            ><span data-content="cta">Get a free audit</span
+            ><svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+              <use href="assets/icons.svg#arrow"></use></svg></a
+          ><button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            hidden
+          >
+            <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M3 5h18M3 12h18M3 19h18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <dialog id="mobile-menu" aria-labelledby="menu-title">
+      <div class="menu-inner">
+        <div class="menu-top">
+          <span id="menu-title" data-brand="name">SIGNAL</span
+          ><button class="menu-close" type="button" aria-label="Close navigation" autofocus>
+            ×
+          </button>
+        </div>
+        <nav aria-label="Mobile navigation">
+          <a href="index.html">Home</a><a href="google-ads.html">Google Ads Management</a
+          ><a href="tracking-automation.html">Tracking &amp; Automation</a
+          ><a href="index.html#process">How we work</a><a href="results.html">Results</a
+          ><a href="index.html#about">About</a
+          ><a class="button" data-link="audit" href="audit.html"
+            ><span data-content="cta">Get a free audit</span
+            ><svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+              <use href="assets/icons.svg#arrow"></use></svg
+          ></a>
+        </nav>
+        <p data-brand="description">Independent Google Ads performance agency</p>
+      </div>
+    </dialog>
+    <p class="config-error container" data-config-error hidden role="alert">
+      Could not load site configuration. Reload this page or contact the site owner. The form is
+      unavailable.
+    </p>
+    <noscript
+      ><div class="container no-js">
+        <p>
+          Navigation: <a href="google-ads.html">Google Ads</a> ·
+          <a href="tracking-automation.html">Tracking</a> · <a href="results.html">Results</a> ·
+          <a href="audit.html">Audit</a>
+        </p>
+        <p>
+          Enable JavaScript to use the form. Contact:
+          <a href="mailto:hello@example.com">hello@example.com</a>.
+        </p>
+      </div></noscript
+    >
+    <main id="main">
+      <section id="hero" class="section hero">
+        <div class="container">
+          <div class="service-hero">
+            <div>
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html#services">Services</a><span aria-hidden="true">/</span
+                ><span>Tracking &amp; automation</span>
+              </nav>
+              <h1>Turn better data into <span class="accent">better decisions.</span></h1>
+              <p class="hero-description">
+                Connect conversion tracking, CRM feedback and revenue signals. Use marketing
+                automation to get more from Google Ads.
+              </p>
+              <a class="button" data-tracking-link href="audit.html?need=tracking"
+                ><span data-content="trackingCta">Review my tracking</span
+                ><svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+                  <use href="assets/icons.svg#arrow"></use></svg
+              ></a>
+            </div>
+            <div class="panel feedback-scene">
+              <ol class="flow four-nodes">
+                <li>
+                  <span class="icon-shell blue" aria-hidden="true"
+                    ><img src="assets/images/icon-search.webp" width="240" height="240" alt=""
+                  /></span>
+                  <div>
+                    <strong>Google Ads</strong>
+                    <p>Campaigns drive traffic.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="icon-shell blue" aria-hidden="true"
+                    ><img src="assets/images/icon-browser.webp" width="240" height="240" alt=""
+                  /></span>
+                  <div>
+                    <strong>Website</strong>
+                    <p>Visitors take action.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="icon-shell green" aria-hidden="true"
+                    ><img src="assets/images/icon-contact.webp" width="240" height="240" alt=""
+                  /></span>
+                  <div>
+                    <strong>CRM</strong>
+                    <p>Leads and customers.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="icon-shell yellow" aria-hidden="true"
+                    ><img src="assets/images/icon-sale.webp" width="240" height="240" alt=""
+                  /></span>
+                  <div>
+                    <strong>Revenue</strong>
+                    <p>Business impact.</p>
+                  </div>
+                </li>
+              </ol>
+              <p class="feedback-caption">Business outcomes inform the next campaign decision.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="measurement-plan" class="section service-expanded">
+        <div class="container">
+          <div class="service-story art-first">
+            <div class="service-story-copy">
+              <p class="eyebrow">Measurement strategy</p>
+              <h2>Define the action.<br />Make the signal useful.</h2>
+              <p>
+                A tracking setup starts with a shared definition of what matters: an enquiry, a
+                connected call, a purchase or a qualified opportunity. Different actions need
+                different measurement rules.
+              </p>
+              <p>
+                We map the journey, review the existing GA4 and GTM setup, and agree which events
+                should inform reporting and campaign decisions. The aim is a setup your team can
+                understand and validate.
+              </p>
+              <ul class="service-story-points">
+                <li>
+                  <strong>Event definitions:</strong> what triggers an event and what it represents.
+                </li>
+                <li>
+                  <strong>Parameters and value:</strong> the information needed to interpret the
+                  action.
+                </li>
+                <li>
+                  <strong>Implementation scope:</strong> tools, access and dependencies to confirm
+                  before setup.
+                </li>
+              </ul>
+              <a class="text-link" href="#capabilities"
+                >Explore measurement capabilities
+                <svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+                  <use href="assets/icons.svg#arrow"></use></svg
+              ></a>
+            </div>
+            <figure class="generated-visual service-story-art">
+              <img
+                src="assets/images/service-event-validation.webp"
+                width="1536"
+                height="1024"
+                alt="Website form, phone call and purchase events checked in a measurement validation panel."
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section id="capabilities" class="section tinted">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Know what happens after the click.</h2>
+            <p>
+              Get a clearer view from ad click to revenue, with conversion tracking and CRM feedback
+              to support smarter decisions.
+            </p>
+          </div>
+          <div class="grid grid-three capability-grid">
+            <article class="card content-card blue">
+              <span class="icon-shell blue" aria-hidden="true"
+                ><img src="assets/images/icon-cursor.webp" width="240" height="240" alt=""
+              /></span>
+              <div class="card-copy">
+                <h3>Conversion tracking</h3>
+                <p>
+                  Review GA4/GTM, form events and call tracking to measure the actions that matter.
+                  Define triggers, parameters and conversion goals, then validate the agreed
+                  journeys.
+                </p>
+                <a class="text-link" data-tracking-link href="audit.html?need=tracking"
+                  >Review my tracking
+                  <svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+                    <use href="assets/icons.svg#arrow"></use></svg
+                ></a>
+              </div>
+            </article>
+            <article class="card content-card green">
+              <span class="icon-shell green" aria-hidden="true"
+                ><img src="assets/images/icon-contact.webp" width="240" height="240" alt=""
+              /></span>
+              <div class="card-copy">
+                <h3>Lead quality</h3>
+                <p>
+                  Review CRM integration and offline conversions to understand which leads turn into
+                  customers. Align qualification stages and available sales feedback with your
+                  measurement plan.
+                </p>
+                <a class="text-link" data-tracking-link href="audit.html?need=tracking"
+                  >Review my tracking
+                  <svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+                    <use href="assets/icons.svg#arrow"></use></svg
+                ></a>
+              </div>
+            </article>
+            <article class="card content-card yellow">
+              <span class="icon-shell yellow" aria-hidden="true"
+                ><img src="assets/images/icon-sale.webp" width="240" height="240" alt=""
+              /></span>
+              <div class="card-copy">
+                <h3>Revenue attribution</h3>
+                <p>
+                  Connect revenue tracking and attribution to commercial decisions. Review
+                  transaction value, data sources and the limits of the reporting view before
+                  interpreting business outcomes.
+                </p>
+                <a class="text-link" data-tracking-link href="audit.html?need=tracking"
+                  >Review my tracking
+                  <svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+                    <use href="assets/icons.svg#arrow"></use></svg
+                ></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="crm-integration" class="section service-expanded">
+        <div class="container">
+          <div class="service-story">
+            <div class="service-story-copy">
+              <p class="eyebrow">Beyond the form submission</p>
+              <h2>Let sales feedback<br />inform your campaigns.</h2>
+              <p>
+                An enquiry is the start of a sales journey. Your CRM may hold the information that
+                explains which leads were relevant, which became opportunities and which turned into
+                customers.
+              </p>
+              <p>
+                We review the stages, identifiers and workflow your tools support. From there, we
+                scope a practical connection between lead quality, offline outcomes and campaign
+                evaluation.
+              </p>
+              <ul class="service-story-points">
+                <li>
+                  <strong>Agree the stages.</strong> Use qualification definitions your sales team
+                  can apply consistently.
+                </li>
+                <li>
+                  <strong>Map the records.</strong> Review identifiers, field mappings and how
+                  outcomes are updated.
+                </li>
+                <li>
+                  <strong>Validate the feedback.</strong> Test the agreed route before relying on it
+                  for decisions.
+                </li>
+              </ul>
+              <a class="text-link" data-tracking-link href="audit.html?need=tracking"
+                >Review your CRM feedback setup
+                <svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+                  <use href="assets/icons.svg#arrow"></use></svg
+              ></a>
+            </div>
+            <figure class="generated-visual service-story-art">
+              <img
+                src="assets/images/service-crm-feedback.webp"
+                width="1536"
+                height="1024"
+                alt="CRM stages from new enquiry through qualified lead to customer, with a feedback loop to campaigns."
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section id="automation" class="section">
+        <div class="container">
+          <div class="panel yellow-panel automation-layout">
+            <div>
+              <h2>Less manual work.<br />More useful signals.</h2>
+              <p>
+                Use automation to keep data accurate, flag opportunities and save time for
+                decisions.
+              </p>
+            </div>
+            <div class="grid grid-two automation-grid">
+              <article class="card content-card blue">
+                <span class="icon-shell blue" aria-hidden="true"
+                  ><img src="assets/images/icon-report.webp" width="240" height="240" alt=""
+                /></span>
+                <div class="card-copy">
+                  <h3>Reporting</h3>
+                  <p>Scheduled reporting with the information your team needs.</p>
+                </div>
+              </article>
+              <article class="card content-card red">
+                <span class="icon-shell red" aria-hidden="true"
+                  ><img src="assets/images/icon-bell.webp" width="240" height="240" alt=""
+                /></span>
+                <div class="card-copy">
+                  <h3>Campaign alerts</h3>
+                  <p>Spend and anomaly alerts that flag changes worth investigating.</p>
+                </div>
+              </article>
+              <article class="card content-card green">
+                <span class="icon-shell green" aria-hidden="true"
+                  ><img src="assets/images/icon-contact.webp" width="240" height="240" alt=""
+                /></span>
+                <div class="card-copy">
+                  <h3>CRM feedback</h3>
+                  <p>Qualified-lead feedback for better campaign evaluation.</p>
+                </div>
+              </article>
+              <article class="card content-card yellow">
+                <span class="icon-shell yellow" aria-hidden="true"
+                  ><img src="assets/images/icon-gear.webp" width="240" height="240" alt=""
+                /></span>
+                <div class="card-copy">
+                  <h3>Product feed checks</h3>
+                  <p>Feed diagnostics to identify missing or inconsistent product data.</p>
+                </div>
+              </article>
+            </div>
+            <p class="ai-note">
+              <span class="icon-shell blue" aria-hidden="true"
+                ><img src="assets/images/icon-spark.webp" width="240" height="240" alt="" /></span
+              >AI assists analysis. People review decisions.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="validation" class="section service-expanded">
+        <div class="container">
+          <div class="validation-panel">
+            <div class="section-heading">
+              <h2>A setup is only useful when it is checked.</h2>
+              <p>
+                Validation turns an implementation into something you can review. We document test
+                scenarios, investigate discrepancies and make unresolved questions visible.
+              </p>
+            </div>
+            <div class="service-scope-grid">
+              <article class="validation-card blue">
+                <div class="validation-card-top">
+                  <span class="icon-shell blue" aria-hidden="true"
+                    ><img
+                      src="assets/images/icon-cursor.webp"
+                      width="240"
+                      height="240"
+                      alt="" /></span
+                  ><span>Check 01</span>
+                </div>
+                <h3>Does the right action fire?</h3>
+                <p>
+                  Test the agreed forms, calls and purchase journeys across the relevant pages and
+                  devices. Confirm the trigger represents the intended action.
+                </p>
+              </article>
+              <article class="validation-card green">
+                <div class="validation-card-top">
+                  <span class="icon-shell green" aria-hidden="true"
+                    ><img
+                      src="assets/images/icon-target.webp"
+                      width="240"
+                      height="240"
+                      alt="" /></span
+                  ><span>Check 02</span>
+                </div>
+                <h3>Is the event consistent?</h3>
+                <p>
+                  Check missing or duplicate events, required parameters and value handling. Review
+                  how the setup behaves with the site’s consent settings.
+                </p>
+              </article>
+              <article class="validation-card yellow">
+                <div class="validation-card-top">
+                  <span class="icon-shell yellow" aria-hidden="true"
+                    ><img
+                      src="assets/images/icon-report.webp"
+                      width="240"
+                      height="240"
+                      alt="" /></span
+                  ><span>Check 03</span>
+                </div>
+                <h3>Can the data be reconciled?</h3>
+                <p>
+                  Compare test records across the website, measurement tools and CRM. Document
+                  differences and the limits of each data source.
+                </p>
+              </article>
+            </div>
+            <div class="validation-footer">
+              <span class="icon-shell blue" aria-hidden="true"
+                ><img src="assets/images/icon-document.webp" width="240" height="240" alt=""
+              /></span>
+              <p>
+                <strong>The output: a record of what was tested.</strong><br />Event definitions,
+                test outcomes, known limitations and the next actions to investigate.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="setup" class="section tinted detailed-process">
+        <div class="container">
+          <div class="section-heading">
+            <h2>A clear setup, step by step.</h2>
+            <p>We handle the technical setup and validate the signals your business needs.</p>
+          </div>
+          <ol class="process-list count-4">
+            <li class="blue illustrated-step">
+              <span class="process-symbol"
+                ><span class="icon-shell blue" aria-hidden="true"
+                  ><img
+                    src="assets/images/icon-search.webp"
+                    width="240"
+                    height="240"
+                    alt="" /></span
+              ></span>
+              <div class="step-copy">
+                <h3><span class="step-number">1</span>Audit</h3>
+                <p>Review your goals, tools and current tracking.</p>
+              </div>
+            </li>
+            <li class="red illustrated-step">
+              <span class="process-symbol"
+                ><span class="icon-shell red" aria-hidden="true"
+                  ><img
+                    src="assets/images/icon-report.webp"
+                    width="240"
+                    height="240"
+                    alt="" /></span
+              ></span>
+              <div class="step-copy">
+                <h3><span class="step-number">2</span>Map</h3>
+                <p>Define meaningful events and how they flow through your funnel.</p>
+              </div>
+            </li>
+            <li class="yellow illustrated-step">
+              <span class="process-symbol"
+                ><span class="icon-shell green" aria-hidden="true"
+                  ><img src="assets/images/icon-link.webp" width="240" height="240" alt="" /></span
+              ></span>
+              <div class="step-copy">
+                <h3><span class="step-number">3</span>Connect</h3>
+                <p>Implement the agreed tracking and CRM integrations.</p>
+              </div>
+            </li>
+            <li class="green illustrated-step">
+              <span class="process-symbol"
+                ><span class="icon-shell green" aria-hidden="true"
+                  ><img
+                    src="assets/images/icon-target.webp"
+                    width="240"
+                    height="240"
+                    alt="" /></span
+              ></span>
+              <div class="step-copy">
+                <h3><span class="step-number">4</span>Validate</h3>
+                <p>Test events and check that the data matches the intended actions.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section id="handover" class="section service-expanded">
+        <div class="container">
+          <div class="service-handover">
+            <div>
+              <p class="eyebrow">Documentation &amp; next steps</p>
+              <h2>A setup your team<br />can work with.</h2>
+              <p>
+                Measurement should remain understandable after implementation. A clear handover
+                helps your team maintain the setup and recognise when the business or website has
+                changed.
+              </p>
+              <p>
+                We agree on ownership of the tools and ongoing responsibilities, then document the
+                work and the next priorities.
+              </p>
+              <a class="button" data-tracking-link href="audit.html?need=tracking"
+                ><span data-content="trackingCta">Review my tracking</span
+                ><svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+                  <use href="assets/icons.svg#arrow"></use></svg
+              ></a>
+            </div>
+            <ol>
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>Measurement map</h3>
+                  <p>The agreed events, conversion definitions and the role of each data source.</p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>Implementation notes</h3>
+                  <p>
+                    A record of the connections, field mappings and configuration your team needs to
+                    understand.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Validation findings</h3>
+                  <p>
+                    What passed the agreed checks, which gaps remain and what further access or work
+                    is required.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>04</span>
+                <div>
+                  <h3>Maintenance priorities</h3>
+                  <p>
+                    Changes to forms, checkout or CRM stages that should trigger another review.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+      <section id="faq" class="section faq">
+        <div class="container">
+          <div class="faq-layout">
+            <div class="section-heading">
+              <h2>Frequently asked questions.</h2>
+              <p>Quick answers about tracking, CRM feedback, validation and implementation.</p>
+            </div>
+            <div class="faq-items">
+              <details open>
+                <summary>
+                  Will this work with my existing CRM?<svg
+                    class="chevron"
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m6 9 6 6 6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </summary>
+                <p>We review your tools and available data before recommending an integration.</p>
+              </details>
+              <details>
+                <summary>
+                  Do you set up offline conversions?<svg
+                    class="chevron"
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m6 9 6 6 6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </summary>
+                <p>We assess the available identifiers, permissions and business workflow first.</p>
+              </details>
+              <details>
+                <summary>
+                  How long does setup take?<svg
+                    class="chevron"
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m6 9 6 6 6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </summary>
+                <p>Timing depends on your tools, access and the complexity of the agreed setup.</p>
+              </details>
+              <details>
+                <summary>
+                  How do you measure success?<svg
+                    class="chevron"
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m6 9 6 6 6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </summary>
+                <p>
+                  We agree on meaningful conversions and review the available business outcomes.
+                </p>
+              </details>
+              <details>
+                <summary>
+                  Do you need account access?<svg
+                    class="chevron"
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m6 9 6 6 6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </summary>
+                <p>
+                  We discuss the access needed for the agreed review. Never share passwords in the
+                  form.
+                </p>
+              </details>
+              <details>
+                <summary>
+                  What happens after the audit?<svg
+                    class="chevron"
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m6 9 6 6 6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </summary>
+                <p>We review your request, clarify goals and agree on the next useful step.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="final-cta" class="section final-cta">
+        <div class="container">
+          <div class="cta-panel">
+            <div>
+              <h2>Ready for clearer data?</h2>
+              <p>
+                Get a free, no-obligation audit of your tracking and automation setup.<br />We’ll
+                review your setup, find opportunities and share practical next steps.
+              </p>
+            </div>
+            <div class="cta-decor" aria-hidden="true"><i></i><i></i><i></i></div>
+            <a class="button" data-tracking-link href="audit.html?need=tracking"
+              ><span data-content="trackingCta">Review my tracking</span
+              ><svg class="arrow-icon" aria-hidden="true" width="20" height="20">
+                <use href="assets/icons.svg#arrow"></use></svg
+            ></a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <a class="brand" href="index.html" data-logo
+            ><span data-brand="name">SIGNAL</span
+            ><span class="brand-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span
+          ></a>
+          <nav aria-label="Footer navigation">
+            <a href="index.html#services">Services</a><a href="index.html#process">How we work</a
+            ><a href="results.html">Results</a><a href="index.html#about">About</a
+            ><a data-link="audit" href="audit.html">Contact</a>
+          </nav>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            © <span data-year>2026</span> <span data-brand="name">SIGNAL</span>.
+            <span data-content="footer">Independent Google Ads performance agency.</span>
+          </p>
+          <div>
+            <a data-email href="mailto:hello@example.com">hello@example.com</a
+            ><a data-link="privacy" href="privacy.html">Privacy</a
+            ><a data-link="terms" href="terms.html">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
