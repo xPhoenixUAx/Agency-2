@@ -1,4 +1,11 @@
 import { configReady } from './brand.js';
+import {
+  enterElement,
+  animateElement,
+  cancelElementMotion,
+  readMotionTokens,
+  isMotionAllowed,
+} from './motion.js';
 const form = document.querySelector('[data-audit-form]');
 const endpoint = new URL('../api/lead.php', import.meta.url);
 if (form) {
@@ -14,11 +21,23 @@ if (form) {
   let sending = false;
   let cfg;
   const say = (text, kind = 'info') => {
+    cancelElementMotion(status);
     status.textContent = text;
     status.dataset.kind = kind;
+    if (text && kind !== 'info' && isMotionAllowed()) {
+      const tokens = readMotionTokens();
+      if (kind === 'success') {
+        animateElement(status, [{ opacity: 0 }, { opacity: 1 }], {
+          duration: tokens.feedback,
+        });
+      } else enterElement(status, { duration: tokens.feedback, distance: 0 });
+    }
   };
   async function token() {
-    const r = await fetch(endpoint, { credentials: 'same-origin', cache: 'no-store' });
+    const r = await fetch(endpoint, {
+      credentials: 'same-origin',
+      cache: 'no-store',
+    });
     const data = await r.json();
     if (!r.ok || typeof data.csrf !== 'string') throw new Error('Session unavailable');
     csrf = data.csrf;
@@ -87,6 +106,12 @@ if (form) {
             note.id = `${field.id}-error`;
             note.textContent = String(message);
             field.closest('.field')?.append(note);
+            if (isMotionAllowed()) {
+              enterElement(note, {
+                duration: readMotionTokens().feedback,
+                distance: 0,
+              });
+            }
             field.setAttribute(
               'aria-describedby',
               `${field.getAttribute('aria-describedby') || ''} ${note.id}`.trim(),

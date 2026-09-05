@@ -703,17 +703,6 @@ details[open] > summary > .chevron {
   display: block;
   margin-top: 8px;
 }
-.reveal-ready {
-  opacity: 0;
-  transform: translateY(12px);
-  transition:
-    opacity 0.32s,
-    transform 0.32s;
-}
-.reveal-ready.is-visible {
-  opacity: 1;
-  transform: none;
-}
 @media (min-width: 1200px) {
   .site-header .brand {
     max-width: 340px;
@@ -1030,22 +1019,12 @@ details[open] > summary > .chevron {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .reveal-ready {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
   .button:hover {
     transform: none;
   }
 }
 html[data-animations='off'] {
   scroll-behavior: auto;
-}
-html[data-animations='off'] .reveal-ready {
-  opacity: 1;
-  transform: none;
-  transition: none;
 }
 html[data-animations='off'] .button {
   transition: none;

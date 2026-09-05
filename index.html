@@ -14,6 +14,8 @@
     <link rel="preload" href="assets/fonts/Inter.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="css/visuals.css" />
     <link rel="stylesheet" href="css/pages/home-expanded.css" />
+    <link rel="stylesheet" href="css/motion.css" />
+    <script src="js/page-transition.js"></script>
     <script type="module" src="js/main.js"></script>
   </head>
   <body class="page-home">
@@ -146,7 +148,13 @@
             <div class="search-bar">
               <span class="icon-shell blue" aria-hidden="true"
                 ><img src="assets/images/icon-search.webp" width="240" height="240" alt="" /></span
-              ><span>Your next customer starts here</span><i aria-hidden="true"></i>
+              ><span class="search-query"
+                ><span class="sr-only"
+                  >Connect your business with customers through Google Ads.</span
+                ><span class="search-query-text" aria-hidden="true"
+                  >Your next customer starts here</span
+                ><i class="search-caret" aria-hidden="true"></i
+              ></span>
             </div>
             <div class="scene-tile ad-tile blue">
               <div class="ad-example">

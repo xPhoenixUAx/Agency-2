@@ -1,4 +1,5 @@
 import { configReady } from './brand.js';
+import { enterElement, cancelElementMotion, readMotionTokens, markRevealed } from './motion.js';
 const cards = [...document.querySelectorAll('article[data-category]')];
 const filters = document.querySelector('[data-case-filters]');
 const status = document.querySelector('[data-filter-status]');
@@ -20,8 +21,11 @@ configReady
         .querySelectorAll('button')
         .forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
       cards.forEach((card) => {
+        markRevealed(card);
+        cancelElementMotion(card);
         card.hidden =
           button.dataset.filter !== 'all' && card.dataset.category !== button.dataset.filter;
+        if (!card.hidden) enterElement(card, { distance: 6, duration: readMotionTokens().ui });
       });
       const count = cards.filter((card) => !card.hidden).length;
       status.textContent = `${count} illustrative case ${count === 1 ? 'study' : 'studies'} shown.`;

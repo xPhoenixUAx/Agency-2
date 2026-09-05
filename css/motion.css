@@ -1,0 +1,307 @@
+/* One policy and one set of responsive tokens for every motion controller. */
+:root {
+  --motion-feedback: 200ms;
+  --motion-ui: 340ms;
+  --motion-enter: 860ms;
+  --motion-scene: 1100ms;
+  --motion-step: 140ms;
+  --motion-cap: 420ms;
+  --motion-node: 760ms;
+  --motion-flow-step: 320ms;
+  --motion-type-letter: 62ms;
+  --motion-type-space: 110ms;
+  --motion-type-hold: 1600ms;
+  --motion-type-clear: 500ms;
+  --motion-type-rest: 450ms;
+  --motion-close: 240ms;
+  --motion-faq-close: 280ms;
+  --motion-menu: 460ms;
+  --motion-menu-step: 60ms;
+  --motion-menu-cap: 240ms;
+  --motion-late: 600ms;
+  --motion-page: 640ms;
+  --motion-page-exit: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0.22, 0.08, 0.24, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --reveal-distance: 28px;
+  --card-lift: -3px;
+  --hero-delays: 0, 140, 260, 320, 520, 680, 900, 1120, 1400;
+  --hero-durations: 920, 800, 620, 1000, 680, 1100, 1100, 1100, 1200;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    --motion-enter: 780ms;
+    --motion-scene: 980ms;
+    --motion-step: 120ms;
+    --motion-cap: 360ms;
+    --motion-node: 700ms;
+    --motion-flow-step: 280ms;
+    --reveal-distance: 24px;
+    --card-lift: -2px;
+    --hero-delays: 0, 120, 220, 280, 440, 580, 760, 940, 1160;
+    --hero-durations: 820, 720, 580, 900, 620, 1000, 1000, 1000, 1080;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --motion-enter: 680ms;
+    --motion-scene: 860ms;
+    --motion-step: 100ms;
+    --motion-cap: 200ms;
+    --motion-node: 640ms;
+    --motion-page: 520ms;
+    --motion-page-exit: 260ms;
+    --motion-flow-step: 240ms;
+    --reveal-distance: 20px;
+    --card-lift: 0px;
+    --hero-delays: 0, 100, 180, 240, 360, 460, 580, 700, 840;
+    --hero-durations: 740, 660, 520, 760, 560, 820, 820, 820, 900;
+  }
+}
+/* Native document transitions keep links, history, forms, and scroll restoration intact. */
+@view-transition {
+  navigation: auto;
+}
+.site-header {
+  view-transition-name: site-header;
+}
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-group(*) {
+  animation-duration: var(--motion-page);
+  animation-timing-function: var(--ease-enter);
+}
+::view-transition-old(root) {
+  animation: page-leave var(--motion-page-exit) ease-in both;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: page-arrive var(--motion-page) var(--ease-enter) both;
+  mix-blend-mode: normal;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+@keyframes page-leave {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@keyframes page-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+html[data-animations='off']::view-transition-group(*),
+html[data-animations='off']::view-transition-old(*),
+html[data-animations='off']::view-transition-new(*) {
+  animation: none !important;
+}
+
+/* Nothing is hidden until a supported, permitted WAAPI animation actually runs. */
+.motion-connector {
+  display: none;
+}
+@media (min-width: 768px) {
+  .flow.motion-connectors > li:not(:last-child)::after {
+    content: none;
+  }
+  .motion-connector {
+    display: block;
+    position: absolute;
+    width: 22px;
+    height: 24px;
+    left: calc(100% + 5px);
+    top: 42%;
+    color: var(--primary);
+    pointer-events: none;
+  }
+  .four-nodes .motion-connector {
+    width: 16px;
+    left: calc(100% + 2px);
+  }
+}
+html[data-motion='on'] .button,
+html[data-motion='on'] .text-link {
+  transition:
+    background-color var(--motion-feedback),
+    color var(--motion-feedback),
+    border-color var(--motion-feedback),
+    transform var(--motion-feedback) var(--ease-standard);
+}
+html[data-motion='on'] .arrow-icon {
+  transition: translate var(--motion-feedback) var(--ease-standard);
+}
+html[data-motion='on'] .button:active {
+  transform: scale(0.98);
+}
+html[data-motion='on'] .button:hover {
+  transform: none;
+}
+html[data-motion='on'] .button:active:hover {
+  transform: scale(0.98);
+}
+.button:focus-visible,
+.text-link:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+@media (hover: hover) and (pointer: fine) {
+  html[data-motion='on'] .button:hover .arrow-icon {
+    translate: 3px 0;
+  }
+  html[data-motion='on'] .text-link:hover .arrow-icon {
+    translate: 2px 0;
+  }
+  html[data-motion='on'] .card--interactive {
+    transition:
+      transform var(--motion-ui) var(--ease-standard),
+      border-color var(--motion-feedback),
+      box-shadow var(--motion-ui);
+  }
+  html[data-motion='on'] .card--interactive:hover {
+    transform: translateY(var(--card-lift));
+    border-color: var(--primary);
+    box-shadow: 0 5px 16px color-mix(in srgb, var(--ink) 7%, transparent);
+  }
+}
+html[data-motion='on'] .site-header {
+  transition:
+    background-color var(--motion-feedback),
+    border-color var(--motion-feedback),
+    box-shadow var(--motion-feedback);
+}
+html[data-motion='on'] .faq .chevron {
+  transition: transform var(--motion-faq-close) var(--ease-standard);
+}
+.faq details[data-motion-open='false'] > summary > .chevron {
+  transform: rotate(0);
+}
+.faq-answer {
+  display: flow-root;
+}
+html[data-motion='on'] :is(input, select, textarea) {
+  transition:
+    border-color var(--motion-feedback),
+    background-color var(--motion-feedback);
+}
+.form-status[data-kind='success']::before {
+  content: '✓';
+  display: inline-block;
+  margin-right: 0.5em;
+  font-weight: 700;
+}
+html[data-motion='on'] .form-status[data-kind='success']::before {
+  animation: motion-check var(--motion-faq-close) var(--ease-enter);
+}
+@keyframes motion-check {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+html[data-motion='on'] #mobile-menu[open]::backdrop {
+  animation: motion-backdrop var(--motion-feedback) var(--ease-standard);
+}
+html[data-motion='on'] #mobile-menu.is-closing::backdrop {
+  animation: motion-backdrop-out var(--motion-close) var(--ease-exit) both;
+}
+@keyframes motion-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes motion-backdrop-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.motion-demo-status {
+  width: 20px;
+  height: 20px;
+  display: inline-grid;
+  place-items: center;
+  margin-left: 8px;
+  color: var(--green);
+  font-size: 14px;
+  line-height: 1;
+  vertical-align: middle;
+}
+.motion-demo-status[data-status='alert'] {
+  color: var(--red);
+}
+.feedback-caption.motion-return {
+  position: relative;
+  border-color: transparent;
+}
+.motion-return-svg {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 24px;
+  overflow: visible;
+  pointer-events: none;
+  color: var(--blue);
+}
+@media (max-width: 767px) {
+  .motion-return-svg {
+    display: none;
+  }
+}
+html:not([data-motion='on']) *,
+html:not([data-motion='on']) *::before,
+html:not([data-motion='on']) *::after,
+html:not([data-motion='on']) *::backdrop {
+  animation: none !important;
+  transition: none !important;
+}
+html:not([data-motion='on']) {
+  scroll-behavior: auto;
+}
+html:not([data-motion='on']) .button:hover {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after,
+  *::backdrop {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
