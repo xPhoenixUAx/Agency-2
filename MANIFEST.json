@@ -1,0 +1,342 @@
+[
+  {
+    "file": "README.md",
+    "bytes": 4201,
+    "sha256": "a7e365b8b16f9e35b34fe47fcdd67622b55a2916b545fcde4bab53efbee28918"
+  },
+  {
+    "file": "START-HERE-CODEX.md",
+    "bytes": 3806,
+    "sha256": "0a86d46efb87b3934502a204b1a760bcef71ba7116c59eff727a8c9eb3dd9c9e"
+  },
+  {
+    "file": "docs/COMPONENTS.md",
+    "bytes": 5283,
+    "sha256": "fd74cf12c73e80366069e7688ea07282219b5f1933913316f6b5cce909f51c31"
+  },
+  {
+    "file": "docs/CONTENT-AND-ROUTES.md",
+    "bytes": 4508,
+    "sha256": "487ef5dad02b3c6f68bac384990333e6c013dade4801be4a5cf4c925b02388e4"
+  },
+  {
+    "file": "docs/DESIGN-SYSTEM.md",
+    "bytes": 5006,
+    "sha256": "a68897334d0ad21890fa51475ae5ed903ed5effc5420a1c3887418047c6f787e"
+  },
+  {
+    "file": "docs/FORM-AND-PHP.md",
+    "bytes": 5417,
+    "sha256": "43749f299468dbab51c089ea4c4fe0f3b9a31ad199adde7dbeebeede8a1ba21b"
+  },
+  {
+    "file": "docs/IMPLEMENTATION-ORDER.md",
+    "bytes": 2474,
+    "sha256": "e270a457bd36cdc44c775111198416bf3ce314c72d9760fd9ea5bf784c2069d9"
+  },
+  {
+    "file": "docs/QA-CHECKLIST.md",
+    "bytes": 2947,
+    "sha256": "d93f89fe5700d16ae0f78a3e12443346b9a4e6ca12a6973c259e3c818483b967"
+  },
+  {
+    "file": "docs/REBRANDING-CLIENT.md",
+    "bytes": 3158,
+    "sha256": "2876f73da1ba1f6c97ce07bf7043783dc1fdea405f11a69797db2f2c720c7fd6"
+  },
+  {
+    "file": "docs/REFERENCE-NOTES.md",
+    "bytes": 4230,
+    "sha256": "adfe33a089828bc9af3f18a3ab0f5708416e91d33c58e3e2296c3caa6929f73d"
+  },
+  {
+    "file": "docs/RUN-LOCALLY.md",
+    "bytes": 1672,
+    "sha256": "965f1ee63dbf53204d3578446cb0411a19c889de98a6c8f50973c280dd7d3210"
+  },
+  {
+    "file": "docs/VALIDATION.md",
+    "bytes": 2289,
+    "sha256": "67e9cdd14565ec4022ea0753d6d01d5758689f5d6eab473b10ee4dee8877eb62"
+  },
+  {
+    "file": "docs/pages/01-home.md",
+    "bytes": 7274,
+    "sha256": "61473f773cf151fff6e8327f6bf8a6bc62af2510b1498a42eaa302914bb69205"
+  },
+  {
+    "file": "docs/pages/02-google-ads.md",
+    "bytes": 5862,
+    "sha256": "3a9dccb440fbb5a3ce9bb32851ec7d640a52347b83a1dd49859edeafd7fd5b4a"
+  },
+  {
+    "file": "docs/pages/03-tracking.md",
+    "bytes": 5735,
+    "sha256": "a4ade6e2fea051b3151c644da0dd716c21e84f9fa3b03ce0e0e7c858ebebf9e2"
+  },
+  {
+    "file": "docs/pages/04-results.md",
+    "bytes": 6993,
+    "sha256": "116595b8b3f181bafcb00dddd80f338f4a5fa2eeab1f26d68fe317431f7a6246"
+  },
+  {
+    "file": "docs/pages/05-audit.md",
+    "bytes": 4626,
+    "sha256": "fa6ffd1d1e18681f19ef925a95da49fcbc22f61cd92be699b9f2f88c93e99b6c"
+  },
+  {
+    "file": "docs/viewports/01-home-desktop.md",
+    "bytes": 1960,
+    "sha256": "ad70cdfa73778bcbb291dd63e8f1f79ee5403ea1655a9eeb2012b1174385066d"
+  },
+  {
+    "file": "docs/viewports/01-home-mobile.md",
+    "bytes": 2284,
+    "sha256": "cffd3ff5e3a155cd032ed15f308cc8b339835d53256edbfa301a74c187c90cd0"
+  },
+  {
+    "file": "docs/viewports/01-home-tablet.md",
+    "bytes": 1875,
+    "sha256": "207374dcd7293acd5f32004a11f474c164f1ab3c667a3a5ee5aca351b3e645d3"
+  },
+  {
+    "file": "docs/viewports/02-google-ads-desktop.md",
+    "bytes": 1694,
+    "sha256": "64d3d797191ec9dbc6c38c53cc3c31cef8fe827be285fdb88ec424c2c59d903a"
+  },
+  {
+    "file": "docs/viewports/02-google-ads-mobile.md",
+    "bytes": 2006,
+    "sha256": "20e8f45dc5a80b520c7937d47bc3b98d42593a5226bbd0b0d9b307ee722cec49"
+  },
+  {
+    "file": "docs/viewports/02-google-ads-tablet.md",
+    "bytes": 1610,
+    "sha256": "e426b3c6fc5983558504da5002038bf2159b6c0ae0844fa2245c6efb0287d370"
+  },
+  {
+    "file": "docs/viewports/03-tracking-desktop.md",
+    "bytes": 1585,
+    "sha256": "ff0b34ff96a0f43d779724cd013c7f871631351901ed6c3e0faea3b6547bb0fa"
+  },
+  {
+    "file": "docs/viewports/03-tracking-mobile.md",
+    "bytes": 1925,
+    "sha256": "06844c4c51200fe1dbefc03d5f9457852917d2bac546ccfd92e8f276054995e3"
+  },
+  {
+    "file": "docs/viewports/03-tracking-tablet.md",
+    "bytes": 1591,
+    "sha256": "941510478b93255118d202b057d7683db6ae8b9de0e22d7c49297304ec9a2d53"
+  },
+  {
+    "file": "docs/viewports/04-results-desktop.md",
+    "bytes": 1688,
+    "sha256": "eed6f63ba7717e7024e80c0fbd8ffc8ee7ddbb263c9dbc0dfb78996f2f75415e"
+  },
+  {
+    "file": "docs/viewports/04-results-mobile.md",
+    "bytes": 2138,
+    "sha256": "332f69411cb8a9802add6912b8718a39d8f2148db23c6cd433e091e09f51835a"
+  },
+  {
+    "file": "docs/viewports/04-results-tablet.md",
+    "bytes": 1769,
+    "sha256": "5c7a185d2b3fb6892547edc59d92bbe69ff5f396f260d27fc43d5432e936628f"
+  },
+  {
+    "file": "docs/viewports/05-audit-desktop.md",
+    "bytes": 1379,
+    "sha256": "787cc8f51b238c7c405ec62e18173ce05ffd511af5aff7d0e80dbd14972d228c"
+  },
+  {
+    "file": "docs/viewports/05-audit-mobile.md",
+    "bytes": 1759,
+    "sha256": "880d68375151e348b439bb76585c26acbd8e9390d106b5f8cf6e36d044c421fc"
+  },
+  {
+    "file": "docs/viewports/05-audit-tablet.md",
+    "bytes": 1349,
+    "sha256": "e4208bcaa79670eb217556117ee0eea27f04bc3c2a75ec0240c7ebf49586ba53"
+  },
+  {
+    "file": "references/01-home-desktop.png",
+    "bytes": 1359741,
+    "sha256": "f59199211790495c49c83c9b69ca21ee90b5ca67e7f2eac05f51556f8b9d920e"
+  },
+  {
+    "file": "references/01-home-mobile-a.png",
+    "bytes": 1244280,
+    "sha256": "1a325c720e038cfc6c92d655accbef942a1552a8bf7cf65f600a7835d4f4623f"
+  },
+  {
+    "file": "references/01-home-mobile-b.png",
+    "bytes": 1271834,
+    "sha256": "21c3fd65df9fe454de11b7a17ed90ea043e855beb4ebf6fabced090bbfbdb0ff"
+  },
+  {
+    "file": "references/01-home-tablet.png",
+    "bytes": 1354996,
+    "sha256": "9ec3c68a078632c39517794fa3e58431ac192ef3a64e023ce87c398addcd3998"
+  },
+  {
+    "file": "references/02-google-ads-desktop.png",
+    "bytes": 1387737,
+    "sha256": "39936d3a88ccd15f4605e766f940c113c3bad56d610edc11974b785c36275796"
+  },
+  {
+    "file": "references/02-google-ads-mobile-a.png",
+    "bytes": 1206465,
+    "sha256": "3dbc1e26096763aaa80909e16baf75e89f1423a94cd3e80acb0c4e95b8daf809"
+  },
+  {
+    "file": "references/02-google-ads-mobile-b.png",
+    "bytes": 1283795,
+    "sha256": "b6b0c606859ea17831d2ecdf10affac9b3833d3458879e32593b0f33e082683d"
+  },
+  {
+    "file": "references/02-google-ads-tablet.png",
+    "bytes": 1384624,
+    "sha256": "723c7da34959c47e429bf2da51305afc3059e23e346ffd03976bd1c73d4e194f"
+  },
+  {
+    "file": "references/03-tracking-desktop.png",
+    "bytes": 1440927,
+    "sha256": "3df1eee81341997d753167915bfadca8591803d2738501a87d49eee3a471138d"
+  },
+  {
+    "file": "references/03-tracking-mobile-a.png",
+    "bytes": 1190778,
+    "sha256": "b36124544c1e00856e56f271452033707901006c431a9305a058eb57611af076"
+  },
+  {
+    "file": "references/03-tracking-mobile-b.png",
+    "bytes": 1227763,
+    "sha256": "8ed3aa9b4f032bb4c6ab5f831be6b004817e2a8c183a66e2e97ca7305f50d193"
+  },
+  {
+    "file": "references/03-tracking-tablet.png",
+    "bytes": 1328462,
+    "sha256": "ad0d5f883de2906a44626b3f72477d4d7e577c5c3b97c1bbbbed4ba827e8a84a"
+  },
+  {
+    "file": "references/04-results-desktop.png",
+    "bytes": 1612725,
+    "sha256": "e838a291ce38b1e8c88e641daaf56a3fc1d816d4dd1d9fad273a7043a421f3f6"
+  },
+  {
+    "file": "references/04-results-mobile-a.png",
+    "bytes": 1260911,
+    "sha256": "08996a5126b6aa4e3603366013ffaf50e70294cf65252c395edeacf57ca26d8d"
+  },
+  {
+    "file": "references/04-results-mobile-b.png",
+    "bytes": 1279004,
+    "sha256": "3a0be0c01a3f025391b47106655f293d9661f6eb83a1cb74157f1659b858f796"
+  },
+  {
+    "file": "references/04-results-tablet.png",
+    "bytes": 1486836,
+    "sha256": "46312ab43b46cd38b82e8c74ff5c6ac45f5d9bb5a825041ba2890669489402b2"
+  },
+  {
+    "file": "references/05-audit-desktop.png",
+    "bytes": 1441489,
+    "sha256": "03b7718fb3463fd582dd5e0e2e994db22cd30db5e86df531aa9c49251806dd33"
+  },
+  {
+    "file": "references/05-audit-mobile-a.png",
+    "bytes": 1111016,
+    "sha256": "f03fdfbb3a70bd23664f784c2b086ba17c287a644a74eb00e7ee06dc0a0bd873"
+  },
+  {
+    "file": "references/05-audit-mobile-b.png",
+    "bytes": 1183897,
+    "sha256": "ad0b05e4525dc7edab22088f7d7c0db76e284002795670f8e47c1f3fc3d3194d"
+  },
+  {
+    "file": "references/05-audit-tablet.png",
+    "bytes": 1291979,
+    "sha256": "22e7990f8a59f26f24ab0b1198cafb3572fb626a29501c62b8507dc2459e9db7"
+  },
+  {
+    "file": "references/index.html",
+    "bytes": 2772,
+    "sha256": "c272210e34606b00aacb288429fbd10652078379befbc96f925ae28c47f29380"
+  },
+  {
+    "file": "references/manifest.json",
+    "bytes": 3479,
+    "sha256": "6e0d298b2107036c47e2ff66f41d2413ce37afc92be829a0bd18d90bd9fe3c21"
+  },
+  {
+    "file": "starter/api/lead.php",
+    "bytes": 5733,
+    "sha256": "f906518e135af99a4af915c5f25795403ec0cafa27020956b12d6271ca5fc123"
+  },
+  {
+    "file": "starter/api/server.example.php",
+    "bytes": 602,
+    "sha256": "9e9a4dd0bec5c2c26f854f3f51bbaebb152a56786f350cc141e2088e408492d9"
+  },
+  {
+    "file": "starter/assets/icons.svg",
+    "bytes": 2369,
+    "sha256": "432b967fed83d3a0900a09422a6d66c2af1ed7e71206ebd926e719b288d726cd"
+  },
+  {
+    "file": "starter/config/site.json",
+    "bytes": 1524,
+    "sha256": "72fe9c82dfcaf47966044fd7a0c1d833e37c71c36d75b4c8d0649eae74579bbf"
+  },
+  {
+    "file": "starter/css/base.css",
+    "bytes": 4524,
+    "sha256": "9da33b83d599fb465e8df2566a19b684856203bf55151bcaebea6e2a239159d3"
+  },
+  {
+    "file": "starter/form-demo.html",
+    "bytes": 3895,
+    "sha256": "1bf1ddff56fa7b4a600d9f2c80d922dfd3102c74661eb313fe3fd5e471df1493"
+  },
+  {
+    "file": "starter/js/brand.js",
+    "bytes": 3761,
+    "sha256": "84f689aa080c8faa35018e56b850d5e44d0d4f6e66372c12aecd3ed4a1922e9d"
+  },
+  {
+    "file": "starter/js/form.js",
+    "bytes": 2962,
+    "sha256": "ba4cd7798760a813a8c5cdd9e8a22acc10a6c796ea70cf53469072ce068887b2"
+  },
+  {
+    "file": "starter/js/rebrand.js",
+    "bytes": 4308,
+    "sha256": "030208610ac64896006220fa514c6e769224f356f86f7c9eec00f407d04cd047"
+  },
+  {
+    "file": "starter/privacy.html",
+    "bytes": 861,
+    "sha256": "c693af9b5f7bda51688ef6a1d74e92b034a0b12b1d77aba74eb781dff47f0f1d"
+  },
+  {
+    "file": "starter/rebrand.html",
+    "bytes": 2305,
+    "sha256": "cbda858720ed0260579944b168aafb85e727e1a0840751d13cbfdeb08bf9b512"
+  },
+  {
+    "file": "starter/terms.html",
+    "bytes": 855,
+    "sha256": "b045bf2c4f1731d69446759b903f1a1d5560c1039ec36b8e27421ed744179d38"
+  },
+  {
+    "file": "tests/config-check.mjs",
+    "bytes": 1561,
+    "sha256": "8477c6afcce4f81f3a3fd29ec3180c7e909232edc8f5244de3460c5cdbe7e9f2"
+  },
+  {
+    "file": "tests/php-smoke.py",
+    "bytes": 1936,
+    "sha256": "e134b6d136b1816a4c709632d5bd4cb8cb83950f99e257c6385238292fc4df11"
+  }
+]

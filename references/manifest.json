@@ -1,0 +1,202 @@
+[
+  {
+    "page": "01-home",
+    "title": "Home",
+    "mode": "desktop",
+    "file": "01-home-desktop.png",
+    "pixelSize": [
+      877,
+      1793
+    ]
+  },
+  {
+    "page": "01-home",
+    "title": "Home",
+    "mode": "tablet",
+    "file": "01-home-tablet.png",
+    "pixelSize": [
+      958,
+      1641
+    ]
+  },
+  {
+    "page": "01-home",
+    "title": "Home",
+    "mode": "mobile-a",
+    "file": "01-home-mobile-a.png",
+    "pixelSize": [
+      837,
+      1880
+    ]
+  },
+  {
+    "page": "01-home",
+    "title": "Home",
+    "mode": "mobile-b",
+    "file": "01-home-mobile-b.png",
+    "pixelSize": [
+      853,
+      1844
+    ]
+  },
+  {
+    "page": "02-google-ads",
+    "title": "Google Ads Management",
+    "mode": "desktop",
+    "file": "02-google-ads-desktop.png",
+    "pixelSize": [
+      921,
+      1708
+    ]
+  },
+  {
+    "page": "02-google-ads",
+    "title": "Google Ads Management",
+    "mode": "tablet",
+    "file": "02-google-ads-tablet.png",
+    "pixelSize": [
+      940,
+      1672
+    ]
+  },
+  {
+    "page": "02-google-ads",
+    "title": "Google Ads Management",
+    "mode": "mobile-a",
+    "file": "02-google-ads-mobile-a.png",
+    "pixelSize": [
+      837,
+      1880
+    ]
+  },
+  {
+    "page": "02-google-ads",
+    "title": "Google Ads Management",
+    "mode": "mobile-b",
+    "file": "02-google-ads-mobile-b.png",
+    "pixelSize": [
+      808,
+      1947
+    ]
+  },
+  {
+    "page": "03-tracking",
+    "title": "Tracking & Automation",
+    "mode": "desktop",
+    "file": "03-tracking-desktop.png",
+    "pixelSize": [
+      999,
+      1574
+    ]
+  },
+  {
+    "page": "03-tracking",
+    "title": "Tracking & Automation",
+    "mode": "tablet",
+    "file": "03-tracking-tablet.png",
+    "pixelSize": [
+      968,
+      1625
+    ]
+  },
+  {
+    "page": "03-tracking",
+    "title": "Tracking & Automation",
+    "mode": "mobile-a",
+    "file": "03-tracking-mobile-a.png",
+    "pixelSize": [
+      837,
+      1880
+    ]
+  },
+  {
+    "page": "03-tracking",
+    "title": "Tracking & Automation",
+    "mode": "mobile-b",
+    "file": "03-tracking-mobile-b.png",
+    "pixelSize": [
+      795,
+      1977
+    ]
+  },
+  {
+    "page": "04-results",
+    "title": "Case Studies",
+    "mode": "desktop",
+    "file": "04-results-desktop.png",
+    "pixelSize": [
+      1024,
+      1536
+    ]
+  },
+  {
+    "page": "04-results",
+    "title": "Case Studies",
+    "mode": "tablet",
+    "file": "04-results-tablet.png",
+    "pixelSize": [
+      979,
+      1606
+    ]
+  },
+  {
+    "page": "04-results",
+    "title": "Case Studies",
+    "mode": "mobile-a",
+    "file": "04-results-mobile-a.png",
+    "pixelSize": [
+      837,
+      1880
+    ]
+  },
+  {
+    "page": "04-results",
+    "title": "Case Studies",
+    "mode": "mobile-b",
+    "file": "04-results-mobile-b.png",
+    "pixelSize": [
+      838,
+      1877
+    ]
+  },
+  {
+    "page": "05-audit",
+    "title": "Free Audit",
+    "mode": "desktop",
+    "file": "05-audit-desktop.png",
+    "pixelSize": [
+      1024,
+      1536
+    ]
+  },
+  {
+    "page": "05-audit",
+    "title": "Free Audit",
+    "mode": "tablet",
+    "file": "05-audit-tablet.png",
+    "pixelSize": [
+      1024,
+      1536
+    ]
+  },
+  {
+    "page": "05-audit",
+    "title": "Free Audit",
+    "mode": "mobile-a",
+    "file": "05-audit-mobile-a.png",
+    "pixelSize": [
+      837,
+      1880
+    ]
+  },
+  {
+    "page": "05-audit",
+    "title": "Free Audit",
+    "mode": "mobile-b",
+    "file": "05-audit-mobile-b.png",
+    "pixelSize": [
+      837,
+      1880
+    ]
+  }
+]

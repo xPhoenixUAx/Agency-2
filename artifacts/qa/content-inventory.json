@@ -1,0 +1,163 @@
+[
+  {
+    "route": "results",
+    "sections": [
+      "hero",
+      "filters",
+      "case-ecommerce",
+      "case-leads",
+      "case-saas",
+      "method",
+      "final-cta"
+    ],
+    "h1": 1,
+    "headings": [
+      "Filter case studies",
+      "Scaling a product portfolio with clearer profit signals.",
+      "Turning enquiries into qualified opportunities.",
+      "Connecting demo requests to pipeline.",
+      "How we read performance.",
+      "Want a clearer view of your account?"
+    ],
+    "services": 0,
+    "channels": 0,
+    "capabilities": 0,
+    "automation": 0,
+    "cases": 3,
+    "faq": 0,
+    "steps": 0,
+    "audiences": 0
+  },
+  {
+    "route": "audit",
+    "sections": [
+      "intro",
+      "audit-form",
+      "next",
+      "faq"
+    ],
+    "h1": 1,
+    "headings": [
+      "Request your free Google Ads audit",
+      "What happens next?",
+      "Before you submit"
+    ],
+    "services": 0,
+    "channels": 0,
+    "capabilities": 0,
+    "automation": 0,
+    "cases": 0,
+    "faq": 2,
+    "steps": 3,
+    "audiences": 0
+  },
+  {
+    "route": "index",
+    "sections": [
+      "hero",
+      "services",
+      "management",
+      "measurement",
+      "automation-home",
+      "process",
+      "work-examples",
+      "about",
+      "partnership",
+      "audit-preview",
+      "faq",
+      "final-cta"
+    ],
+    "h1": 1,
+    "headings": [
+      "The right Google Ads mix for your goals.",
+      "A complete account. A clear direction.",
+      "Better signals. Smarter decisions.",
+      "Less manual work. More time to act.",
+      "A clear process, from audit to growth.",
+      "The thinking behind better performance.",
+      "Built around your business.",
+      "Know what changed. Understand what comes next.",
+      "A useful first step. A clearer plan for your account.",
+      "Frequently asked questions.",
+      "Ready for a clearer growth plan?"
+    ],
+    "services": 4,
+    "channels": 0,
+    "capabilities": 0,
+    "automation": 0,
+    "cases": 0,
+    "faq": 6,
+    "steps": 5,
+    "audiences": 4
+  },
+  {
+    "route": "google-ads",
+    "sections": [
+      "hero",
+      "campaign-strategy",
+      "channels",
+      "account-deliverables",
+      "process",
+      "creative-testing",
+      "performance-review",
+      "outcomes",
+      "faq",
+      "final-cta"
+    ],
+    "h1": 1,
+    "headings": [
+      "A campaign mix with a job for every channel.",
+      "Four ways to reach your next customer.",
+      "What goes into managing your account.",
+      "From campaign setup to measurable growth.",
+      "A good click needs a clear next step.",
+      "Know what the numbers mean.",
+      "Built around the right outcome.",
+      "Frequently asked questions.",
+      "Ready to grow with Google Ads?"
+    ],
+    "services": 0,
+    "channels": 4,
+    "capabilities": 0,
+    "automation": 0,
+    "cases": 0,
+    "faq": 6,
+    "steps": 5,
+    "audiences": 0
+  },
+  {
+    "route": "tracking-automation",
+    "sections": [
+      "hero",
+      "measurement-plan",
+      "capabilities",
+      "crm-integration",
+      "automation",
+      "validation",
+      "setup",
+      "handover",
+      "faq",
+      "final-cta"
+    ],
+    "h1": 1,
+    "headings": [
+      "Define the action. Make the signal useful.",
+      "Know what happens after the click.",
+      "Let sales feedback inform your campaigns.",
+      "Less manual work. More useful signals.",
+      "A setup is only useful when it is checked.",
+      "A clear setup, step by step.",
+      "A setup your team can work with.",
+      "Frequently asked questions.",
+      "Ready for clearer data?"
+    ],
+    "services": 0,
+    "channels": 0,
+    "capabilities": 3,
+    "automation": 4,
+    "cases": 0,
+    "faq": 6,
+    "steps": 4,
+    "audiences": 0
+  }
+]

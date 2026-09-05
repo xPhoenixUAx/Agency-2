@@ -1,0 +1,43 @@
+{
+  "brand": {
+    "name": "SIGNAL",
+    "legalName": "Your registered company name",
+    "description": "Independent Google Ads performance agency",
+    "logo": "",
+    "email": "hello@example.com",
+    "address": "Your business address",
+    "website": "https://example.com"
+  },
+  "colors": {
+    "primary": "#1967D2",
+    "blue": "#4285F4",
+    "red": "#EA4335",
+    "yellow": "#FBBC05",
+    "green": "#34A853",
+    "ink": "#202124",
+    "muted": "#5F6368",
+    "surface": "#EAF3FE"
+  },
+  "content": {
+    "heroTitle": "Make every search a new opportunity.",
+    "heroDescription": "Connect your campaigns, customer data and business goals. Grow with Google Ads that work harder for you.",
+    "cta": "Get a free audit",
+    "submit": "Request my audit",
+    "success": "Thank you! We have received your request. Our team will review your information and get back to you shortly.",
+    "footer": "Independent Google Ads performance agency."
+  },
+  "links": {
+    "audit": "audit.html",
+    "privacy": "privacy.html",
+    "terms": "terms.html"
+  },
+  "form": {
+    "businessTypes": ["Lead Generation", "E-commerce", "Local Business", "B2B / SaaS", "Mobile App", "Other"],
+    "budgets": ["Not sure yet", "Under $1,000", "$1,000–$5,000", "$5,000–$20,000", "$20,000+"],
+    "needs": ["Google Ads Management", "Performance Max", "Shopping", "Lead Generation", "Tracking & Analytics", "Marketing Automation", "Account Audit", "Other"]
+  },
+  "features": {
+    "showIllustrativeCases": true,
+    "animations": true
+  }
+}
