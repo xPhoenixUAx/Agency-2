@@ -135,6 +135,7 @@ html[data-animations='off']::view-transition-new(*) {
 }
 .scroll-decor {
   display: none;
+  opacity: var(--decor-presence, 0);
   position: fixed;
   inset-inline: 0;
   z-index: 2;
@@ -149,6 +150,7 @@ html[data-motion='on'] .scroll-decor[data-active='true'] {
   position: absolute;
   top: 0;
   left: 0;
+  translate: 0 var(--decor-offset, 72px);
   display: grid;
   place-items: center;
   border-radius: 50%;

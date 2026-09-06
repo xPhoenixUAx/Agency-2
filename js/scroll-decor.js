@@ -97,6 +97,8 @@ export function initScrollDecor(signal, allowed) {
   let previousTime = 0;
   let accumulator = 0;
   let nextDrop = 0;
+  let presence = 0;
+  let presenceVelocity = 0;
   let furthest = savedPile?.furthest || 0;
   let needsMeasure = true;
   const timestep = 1000 / 120;
@@ -253,16 +255,45 @@ export function initScrollDecor(signal, allowed) {
     frame = 0;
     if (!allowed() || signal.aborted) return;
     if (needsMeasure) measure();
+    const elapsed = Math.min(time - previousTime, 50);
+    previousTime = time;
     const visibleHeight = clamp(geometry.end - scrollY - geometry.top, 0, geometry.height);
-    const visible = geometry.gutter >= 72 && scrollY >= geometry.start && visibleHeight >= 100;
-    layer.dataset.active = String(visible && !failed);
-    if (!visible) {
+    const hasRoom = geometry.gutter >= 72 && visibleHeight >= 100;
+    if (!hasRoom || failed) {
+      presence = 0;
+      presenceVelocity = 0;
+      layer.dataset.active = 'false';
+      accumulator = 0;
+      return;
+    }
+    // Fade over a scroll band instead of switching visibility at one pixel.
+    // Preserve the pile and soften fast wheel/anchor jumps with a damped response.
+    const progress = clamp((scrollY - geometry.start) / 240, 0, 1);
+    const targetPresence = progress * progress * (3 - 2 * progress);
+    const seconds = elapsed / 1000;
+    const response = 7;
+    const offset = presence - targetPresence;
+    const impulse = presenceVelocity + response * offset;
+    const decay = Math.exp(-response * seconds);
+    presence = clamp(targetPresence + (offset + impulse * seconds) * decay, 0, 1);
+    presenceVelocity = (presenceVelocity - response * impulse * seconds) * decay;
+    const revealing =
+      Math.abs(presence - targetPresence) >= 0.0005 || Math.abs(presenceVelocity) >= 0.002;
+    if (!revealing) {
+      presence = targetPresence;
+      presenceVelocity = 0;
+    }
+    layer.style.setProperty('--decor-presence', presence.toFixed(4));
+    layer.style.setProperty('--decor-offset', `${((1 - presence) * 72).toFixed(2)}px`);
+    layer.dataset.active = String(presence > 0 || targetPresence > 0);
+    if (presence === 0 && targetPresence === 0) {
       accumulator = 0;
       return;
     }
     layer.style.height = `${visibleHeight}px`;
     if (!engine) {
       startPhysics();
+      if (revealing) frame = requestAnimationFrame(update);
       return;
     }
     syncWalls(visibleHeight - 16);
@@ -272,18 +303,18 @@ export function initScrollDecor(signal, allowed) {
       ((geometry.end - geometry.start - geometry.height) * 0.85) / geometry.capacity,
     );
     const wanted = Math.min(geometry.capacity, 2 + Math.floor(furthest / spacing));
-    if (balls.length < wanted && time >= nextDrop) {
+    const canDrop = targetPresence > 0 && balls.length < wanted;
+    if (canDrop && time >= nextDrop) {
       addBall(balls.length);
       nextDrop = time + 260;
     }
-    accumulator += Math.min(time - previousTime, 50);
-    previousTime = time;
+    accumulator += elapsed;
     while (accumulator >= timestep) {
       physics.Engine.update(engine, timestep);
       accumulator -= timestep;
     }
     draw();
-    if (balls.length < wanted || balls.some(({ body }) => !body.isSleeping)) {
+    if (revealing || canDrop || balls.some(({ body }) => !body.isSleeping)) {
       frame = requestAnimationFrame(update);
     }
   };
