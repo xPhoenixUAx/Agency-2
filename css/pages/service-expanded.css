@@ -222,21 +222,11 @@
   min-width: 0;
 }
 .validation-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
   margin-bottom: 20px;
 }
 .validation-card-top .icon-shell {
   width: 80px;
   height: 80px;
-}
-.validation-card-top > span {
-  font-size: 12px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 .validation-card p {
   font-size: 16px;
@@ -277,20 +267,11 @@
   list-style: none;
 }
 .service-handover li {
-  display: flex;
-  gap: 22px;
   padding: 24px;
   margin-bottom: 16px;
   border: 1px solid #e0e9ef;
   background: linear-gradient(110deg, var(--green-soft), white);
   border-radius: 18px;
-}
-.service-handover li > span {
-  flex-shrink: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--green);
-  padding-top: 5px;
 }
 .service-handover li > div {
   min-width: 0;
@@ -381,10 +362,6 @@
   .service-review-note > a {
     margin-left: 84px;
   }
-  .validation-card-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
   .validation-card-top .icon-shell {
     width: 64px;
     height: 64px;
@@ -401,7 +378,6 @@
   .service-handover li {
     margin: 0;
     padding: 22px;
-    gap: 16px;
   }
 }
 @media (max-width: 767px) {
@@ -534,7 +510,6 @@
   }
   .service-handover li {
     padding: 20px 16px;
-    gap: 14px;
   }
   .service-handover > div > .button {
     width: 100%;

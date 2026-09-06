@@ -298,8 +298,6 @@
   padding: 0;
 }
 .partnership-list li {
-  display: flex;
-  gap: 24px;
   padding: 0 0 24px;
   margin-bottom: 24px;
   border-bottom: 1px solid var(--border);
@@ -308,12 +306,6 @@
   margin: 0;
   padding-bottom: 0;
   border-bottom: 0;
-}
-.partnership-list li > span {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--primary);
-  padding-top: 4px;
 }
 .partnership-list li > div {
   min-width: 0;
@@ -448,6 +440,12 @@
 .page-home .service-grid .text-link {
   margin-top: auto;
   padding-top: 8px;
+}
+/* Keep narrow physics lanes clear of the content on laptop-sized viewports. */
+@media (min-width: 1024px) and (max-width: 1583px) {
+  .page-home main > .section:not(.hero) > .container {
+    padding-inline: 88px;
+  }
 }
 @media (max-width: 1199px) {
   .page-home .home-expanded {
@@ -652,7 +650,6 @@
     line-height: 34px;
   }
   .partnership-list li {
-    gap: 16px;
     margin-bottom: 20px;
     padding-bottom: 20px;
   }

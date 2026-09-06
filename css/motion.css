@@ -298,20 +298,6 @@ html[data-motion='on'] #mobile-menu.is-closing::backdrop {
     opacity: 0;
   }
 }
-.motion-demo-status {
-  width: 20px;
-  height: 20px;
-  display: inline-grid;
-  place-items: center;
-  margin-left: 8px;
-  color: var(--green);
-  font-size: 14px;
-  line-height: 1;
-  vertical-align: middle;
-}
-.motion-demo-status[data-status='alert'] {
-  color: var(--red);
-}
 .feedback-caption.motion-return {
   position: relative;
   border-color: transparent;

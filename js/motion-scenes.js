@@ -247,22 +247,6 @@ export async function playScene(name, element, signal, motion) {
         profile: 'badge',
       });
     });
-    if (tokens.mode === 'desktop') {
-      parts.forEach((el, index) => {
-        const heading = el.querySelector('h3');
-        if (!heading) return;
-        let status = heading.querySelector('.motion-demo-status');
-        if (!status) {
-          status = document.createElement('span');
-          status.className = 'motion-demo-status';
-          status.setAttribute('aria-hidden', 'true');
-          status.dataset.status = index === 1 ? 'alert' : 'checked';
-          status.textContent = index === 1 ? '●' : '✓';
-          heading.append(status);
-        }
-        enter(status, tokens.enter + index * tokens.flowStep, tokens.node, { profile: 'badge' });
-      });
-    }
   } else {
     const interval = tokens.flowStep;
     parts.forEach((el, index) => {

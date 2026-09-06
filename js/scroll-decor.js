@@ -105,9 +105,19 @@ export function initScrollDecor(signal, allowed) {
 
   const measure = () => {
     const bounds = container.getBoundingClientRect();
+    const style = getComputedStyle(container);
     const top = header?.offsetHeight || 0;
-    const gutter = Math.min(bounds.left, document.documentElement.clientWidth - bounds.right);
-    const diameter = clamp(gutter - 32, 40, 64);
+    const width = document.documentElement.clientWidth;
+    const outerGutter = Math.min(bounds.left, width - bounds.right);
+    const contentGutter =
+      Math.min(
+        bounds.left + parseFloat(style.paddingLeft),
+        width - bounds.right + parseFloat(style.paddingRight),
+      ) - 12;
+    const compact = width < 1680;
+    // Laptop layouts reserve part of the container padding for smaller balls.
+    const gutter = width >= 1024 && outerGutter < 72 ? Math.min(76, contentGutter) : outerGutter;
+    const diameter = clamp(gutter - 32, 40, compact ? 48 : 64);
     const height = Math.max(1, innerHeight - top);
     geometry = {
       top,
@@ -115,11 +125,13 @@ export function initScrollDecor(signal, allowed) {
       gutter,
       diameter,
       capacity: clamp(
-        Math.floor((gutter - 16) / diameter) * Math.floor((height * 0.4) / diameter) * 2,
-        6,
-        36,
+        Math.floor((gutter - 16) / diameter) *
+          Math.floor((height * (compact ? 0.58 : 0.6)) / diameter) *
+          2,
+        compact ? 12 : 10,
+        compact ? 28 : 72,
       ),
-      width: document.documentElement.clientWidth,
+      width,
       start: section.getBoundingClientRect().top + scrollY - top,
       end: footer ? footer.getBoundingClientRect().top + scrollY : document.body.scrollHeight,
     };
@@ -299,8 +311,8 @@ export function initScrollDecor(signal, allowed) {
     syncWalls(visibleHeight - 16);
     furthest = Math.max(furthest, scrollY - geometry.start);
     const spacing = Math.max(
-      150,
-      ((geometry.end - geometry.start - geometry.height) * 0.85) / geometry.capacity,
+      80,
+      ((geometry.end - geometry.start - geometry.height) * 0.72) / geometry.capacity,
     );
     const wanted = Math.min(geometry.capacity, 2 + Math.floor(furthest / spacing));
     const canDrop = targetPresence > 0 && balls.length < wanted;
