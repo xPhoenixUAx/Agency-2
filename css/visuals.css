@@ -845,20 +845,22 @@ h3 {
   grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
 }
 .page-audit form {
-  padding: 32px;
+  padding: 24px;
 }
 .page-audit form h2 {
   font-size: 30px;
   line-height: 37px;
+  margin-bottom: 8px;
 }
 .page-audit form > p {
   display: none;
 }
-.form-grid {
-  gap: 22px 20px;
+.page-audit .form-grid {
+  gap: 16px 20px;
 }
 .page-audit textarea {
-  min-height: 128px;
+  display: block;
+  min-height: 88px;
 }
 .page-audit .process-list li {
   background: white;
@@ -1078,9 +1080,6 @@ summary {
   }
   .page-tracking #setup .process-list li {
     text-align: left;
-  }
-  .page-tracking #setup .step-number {
-    display: flex;
   }
   .page-tracking .faq h2 {
     font-size: 34px;
@@ -1473,8 +1472,8 @@ summary {
     font-size: 26px;
     line-height: 32px;
   }
-  .form-grid {
-    gap: 18px;
+  .page-audit .form-grid {
+    gap: 14px;
   }
   .page-audit .process-symbol {
     display: none;
@@ -1532,19 +1531,6 @@ summary {
   justify-content: center;
   gap: 8px;
 }
-.page-tracking #setup .illustrated-step .step-number {
-  width: auto;
-  height: auto;
-  background: none;
-  color: var(--ink);
-  font-size: 19px;
-  line-height: 25px;
-  margin: 0;
-  flex-shrink: 0;
-}
-.page-tracking #setup .illustrated-step .step-number::after {
-  content: '.';
-}
 .page-audit #next .process-list h3 {
   font-size: 20px;
   line-height: 27px;
@@ -1566,6 +1552,7 @@ textarea::placeholder {
 .page-audit form textarea {
   border-color: #c5cfdd;
   font-weight: 400;
+  padding-block: 10px;
 }
 .page-audit form label {
   font-weight: 500;
@@ -1625,17 +1612,6 @@ textarea::placeholder {
   .page-tracking #setup .illustrated-step h3 {
     justify-content: flex-start;
     margin: 0;
-  }
-  .page-tracking #setup .illustrated-step .step-number {
-    display: inline-flex;
-    width: 32px;
-    height: 32px;
-    background: var(--soft);
-    color: var(--tone);
-    font-size: 18px;
-  }
-  .page-tracking #setup .illustrated-step .step-number::after {
-    content: none;
   }
 }
 @media (max-width: 767px) {
@@ -1846,7 +1822,7 @@ textarea::placeholder {
   display: block;
   font-size: 13px;
   line-height: 21px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 @media (max-width: 767px) {
   .portfolio-art {
