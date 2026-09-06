@@ -77,21 +77,6 @@ textarea {
   grid-template-columns: 1fr;
   gap: 8px;
 }
-.legal-copy {
-  max-width: 900px;
-  margin: auto;
-  overflow-wrap: anywhere;
-}
-.legal-copy .notice {
-  background: var(--yellow-soft);
-  padding: 20px;
-  border-radius: 16px;
-}
-.legal-copy h2 {
-  margin-top: 36px;
-  font-size: 28px;
-  line-height: 34px;
-}
 .retry-session {
   margin-top: 12px;
 }

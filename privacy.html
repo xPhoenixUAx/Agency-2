@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-page-title="Privacy notice">
+<html lang="en" data-page-title="Privacy Policy">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
@@ -8,20 +8,21 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="Privacy notice. Google Ads management, measurement and automation built around your business goals."
+      content="How we handle your information when you visit our website, request an audit or contact our team."
     />
-    <meta name="robots" content="noindex" />
-    <title>Privacy notice | SIGNAL</title>
+    <title>Privacy Policy | SIGNAL</title>
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/pages/audit.css" />
+    <link rel="stylesheet" href="css/pages/legal.css" />
     <link rel="preload" href="assets/fonts/Inter.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="css/visuals.css" />
     <link rel="stylesheet" href="css/motion.css" />
+    <link rel="stylesheet" href="css/cookies.css" />
+    <script src="js/cookie-preferences.js"></script>
     <script src="js/page-transition.js"></script>
     <script type="module" src="js/main.js"></script>
   </head>
-  <body class="page-audit">
+  <body class="page-legal">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container">
@@ -125,32 +126,260 @@
     <main id="main">
       <section id="legal" class="section">
         <div class="container">
-          <div class="legal-copy">
-            <h1>Privacy notice</h1>
-            <p class="notice">
-              <strong>Draft — approved company text is required before launch.</strong>
-            </p>
-            <p>This is a placeholder, not a complete policy or contract.</p>
-            <h2>Company details</h2>
-            <p>
-              <span data-brand="legalName">Your registered company name</span><br /><span
-                data-brand="address"
-                >Your business address</span
-              >
-            </p>
-            <p>Contact: <a data-email href="mailto:hello@example.com">hello@example.com</a></p>
-            <h2>Current form behaviour</h2>
-            <p>
-              The audit form uses a technical session cookie for CSRF protection. Submitted fields
-              are processed by the server and sent to the configured recipient. No advertising or
-              analytics scripts are enabled by default.
-            </p>
-            <p>
-              The owner must approve a complete notice describing the actual company, processors,
-              retention periods and applicable rights before launch.
-            </p>
-            <a href="audit.html">Back to the audit form</a>
-          </div>
+          <article class="legal-copy">
+            <header class="legal-header">
+              <p class="eyebrow">Legal information</p>
+              <h1>Privacy Policy</h1>
+              <p class="legal-intro">
+                How we handle your information when you visit our website, request an audit or
+                contact our team.
+              </p>
+              <p class="legal-updated">
+                Last updated:
+                <time data-legal="updatedOn" datetime="2026-09-06">6 September 2026</time>
+              </p>
+            </header>
+            <nav class="legal-toc" aria-label="On this page">
+              <p>On this page</p>
+              <div>
+                <a href="#who-we-are">Who is responsible for your data</a>
+                <a href="#information">Information we collect</a>
+                <a href="#purposes">How and why we use information</a>
+                <a href="#sharing">Who receives information</a>
+                <a href="#transfers">International processing</a>
+                <a href="#retention">How long information is kept</a>
+                <a href="#security">Protecting your information</a>
+                <a href="#rights">Your privacy rights</a>
+                <a href="#cookies">Cookies, links and younger visitors</a>
+                <a href="#changes">Changes to this notice</a>
+              </div>
+            </nav>
+            <section id="who-we-are" class="legal-section" aria-labelledby="who-we-are-title">
+              <h2 id="who-we-are-title">Who is responsible for your data</h2>
+              <p>
+                <span data-brand="legalName">Your registered company name</span>, trading as
+                <span data-brand="name">SIGNAL</span> (“we”, “us”), is responsible for the personal
+                information collected through this website and our business enquiries. Where data
+                protection law uses the term, we act as the data controller.
+              </p>
+              <dl class="legal-details">
+                <div>
+                  <dt>Legal entity</dt>
+                  <dd data-brand="legalName">Your registered company name</dd>
+                </div>
+                <div>
+                  <dt>Trading name</dt>
+                  <dd data-brand="name">SIGNAL</dd>
+                </div>
+                <div>
+                  <dt>Business address</dt>
+                  <dd data-brand="address">Your business address</dd>
+                </div>
+                <div data-legal-optional="registeredCountry" hidden>
+                  <dt>Country of registration</dt>
+                  <dd data-legal="registeredCountry"></dd>
+                </div>
+                <div data-legal-optional="registrationNumber" hidden>
+                  <dt>Registration number</dt>
+                  <dd data-legal="registrationNumber"></dd>
+                </div>
+                <div data-legal-optional="taxNumber" hidden>
+                  <dt>Tax / VAT number</dt>
+                  <dd data-legal="taxNumber"></dd>
+                </div>
+                <div>
+                  <dt>Email</dt>
+                  <dd><a data-email href="mailto:hello@example.com">hello@example.com</a></dd>
+                </div>
+                <div>
+                  <dt>Website</dt>
+                  <dd>
+                    <a data-business-website href="https://example.com">https://example.com</a>
+                  </dd>
+                </div>
+              </dl>
+              <p>
+                For privacy enquiries or requests, contact
+                <a data-privacy-email href="mailto:hello@example.com">hello@example.com</a>.
+              </p>
+              <p
+                data-legal-optional="privacyContactDetails"
+                data-legal="privacyContactDetails"
+                hidden
+              ></p>
+            </section>
+            <section id="information" class="legal-section" aria-labelledby="information-title">
+              <h2 id="information-title">Information we collect</h2>
+              <ul>
+                <li>
+                  <strong>Enquiries:</strong> your name, business email, website, business type and
+                  the help you request. You may also provide a company name, advertising budget and
+                  message.
+                </li>
+                <li>
+                  <strong>Correspondence:</strong> information you send us by email and our replies,
+                  including details needed to understand your project.
+                </li>
+                <li>
+                  <strong>Technical information:</strong> the hosting service may record your IP
+                  address, requested pages, request times, browser information and errors. The form
+                  uses a security session and a hashed IP-based record to limit repeated requests.
+                </li>
+              </ul>
+              <p>
+                Required form fields are marked with an asterisk. Without them, we cannot process an
+                audit request through the form. Optional fields can be left blank. Please do not
+                send passwords, payment details, sensitive personal information or customer lists in
+                an enquiry.
+              </p>
+            </section>
+            <section id="purposes" class="legal-section" aria-labelledby="purposes-title">
+              <h2 id="purposes-title">How and why we use information</h2>
+              <p>
+                We use enquiry details to respond, assess your needs, prepare an audit or proposal
+                and discuss a possible engagement. Technical records help deliver the website,
+                diagnose faults and prevent spam or misuse. We may also use relevant records to meet
+                legal duties or handle disputes.
+              </p>
+              <p>
+                Where a legal basis is required, responding to a request you make about entering a
+                contract relies on taking steps at your request before a contract. Communications
+                with a business representative and website security rely on our legitimate interests
+                in running and protecting our business, balanced against your rights. Mandatory
+                record-keeping relies on the relevant legal obligation.
+              </p>
+              <p>
+                The privacy checkbox acknowledges that you have read this notice. It does not sign
+                you up for marketing. We do not use website enquiries for automated decisions that
+                have legal or similarly significant effects on you.
+              </p>
+            </section>
+            <section id="sharing" class="legal-section" aria-labelledby="sharing-title">
+              <h2 id="sharing-title">Who receives information</h2>
+              <p data-legal="providers">
+                We use website hosting and email delivery providers to operate this website and
+                receive enquiries. These providers process information needed to deliver their
+                services. Access is limited to the people and providers who need it for the purposes
+                described here.
+              </p>
+              <p>
+                Audit submissions are sent to our enquiry mailbox. We do not sell enquiry
+                information or disclose it for another organisation’s independent advertising.
+                Information may also be shared with professional advisers or authorities where
+                needed for legal advice, a legal duty or a claim.
+              </p>
+              <p>
+                If we work with you on advertising, analytics or automation, any access to your
+                accounts or your customers’ data is arranged separately. The engagement terms and,
+                where required, a data processing agreement define that work.
+              </p>
+            </section>
+            <section id="transfers" class="legal-section" aria-labelledby="transfers-title">
+              <h2 id="transfers-title">International processing</h2>
+              <p data-legal="internationalTransfers">
+                Service providers may process information in countries other than your own. Where
+                applicable law restricts international transfers, we use the safeguards it requires,
+                such as recognised adequacy decisions or contractual safeguards. Contact us for
+                information about the arrangements relevant to your data and how to obtain a copy of
+                applicable safeguards.
+              </p>
+            </section>
+            <section id="retention" class="legal-section" aria-labelledby="retention-title">
+              <h2 id="retention-title">How long information is kept</h2>
+              <p data-legal="enquiryRetention">
+                We retain enquiries and related correspondence while responding to your request and
+                considering or managing a business relationship. We review whether the information
+                is still needed when the enquiry is resolved or discussions end, taking account of
+                outstanding follow-up, applicable record-keeping duties and the time needed to
+                establish or defend legal claims. Information that is no longer needed is deleted or
+                anonymised.
+              </p>
+              <p data-legal="technicalRetention">
+                Form security tokens expire after one hour. Request-limit records use a ten-minute
+                activity window; inactive records become eligible for periodic cleanup after 24
+                hours. Hosting logs and backups follow the hosting provider’s retention
+                arrangements, taking account of security investigations, recovery needs and
+                applicable legal duties.
+              </p>
+              <p data-legal="clientRetention">
+                If an enquiry becomes a client engagement, records needed to deliver the service,
+                maintain accounts or handle legal claims are retained for the relevant contractual
+                and legally required periods. The service agreement and any data processing
+                agreement provide further details.
+              </p>
+            </section>
+            <section id="security" class="legal-section" aria-labelledby="security-title">
+              <h2 id="security-title">Protecting your information</h2>
+              <p>
+                We use safeguards appropriate to the information and risks involved, including form
+                validation, request limits and session checks. We limit access to enquiry records to
+                those handling your request or supporting the service. No transmission or storage
+                system can be guaranteed completely secure; contact us if you believe information
+                sent to us has been exposed or misused.
+              </p>
+            </section>
+            <section id="rights" class="legal-section" aria-labelledby="rights-title">
+              <h2 id="rights-title">Your privacy rights</h2>
+              <p>
+                Depending on the law that applies to you, you may request access to your
+                information, correction, deletion, restriction of processing or a portable copy. You
+                may also object to processing based on legitimate interests. If we rely on consent
+                for a particular activity, you can withdraw it without affecting processing already
+                lawfully carried out.
+              </p>
+              <p>
+                Send requests to
+                <a data-privacy-email href="mailto:hello@example.com">hello@example.com</a>. We may
+                need proportionate information to verify your identity. We respond within the period
+                required by applicable law and explain any lawful reason why a request cannot be
+                fully fulfilled.
+              </p>
+              <p>
+                You may complain to the competent data protection authority, including, where
+                applicable, the authority where you live, work or believe an infringement occurred.
+                You do not have to contact us first.
+              </p>
+              <p data-legal-optional="supervisoryAuthority" hidden>
+                Relevant authority: <span data-legal="supervisoryAuthority"></span>.
+              </p>
+              <p data-legal-optional="supervisoryAuthorityUrl" hidden>
+                <a data-authority-link hidden>Visit the data protection authority</a>
+              </p>
+            </section>
+            <section id="cookies" class="legal-section" aria-labelledby="cookies-title">
+              <h2 id="cookies-title">Cookies, links and younger visitors</h2>
+              <p>
+                This website uses a technical cookie for the audit form, stores your cookie
+                preferences and, with your permission, uses temporary browser storage for
+                navigation. It does not currently run advertising pixels or audience analytics. See
+                our <a data-link="cookies" href="cookies.html">Cookie Policy</a> for the storage
+                used, its duration and your controls.
+              </p>
+              <p>
+                Other websites you visit through our links have their own privacy practices. Our
+                services are directed to business customers and are not intended for children.
+                Contact us if you believe a child has provided personal information so we can assess
+                and address it.
+              </p>
+            </section>
+            <section id="changes" class="legal-section" aria-labelledby="changes-title">
+              <h2 id="changes-title">Changes to this notice</h2>
+              <p>
+                We update this notice when our processing or legal obligations change. The date
+                above identifies the current version. Where required, we will give additional notice
+                of material changes or obtain consent before starting a new use that requires it.
+              </p>
+              <p>
+                Questions about this notice? Contact
+                <a data-privacy-email href="mailto:hello@example.com">hello@example.com</a>.
+              </p>
+            </section>
+            <nav class="legal-related" aria-label="Related legal information">
+              <a data-link="privacy" href="privacy.html">Privacy Policy</a
+              ><a data-link="terms" href="terms.html">Terms of Use</a
+              ><a data-link="cookies" href="cookies.html">Cookie Policy</a>
+            </nav>
+          </article>
         </div>
       </section>
     </main>
@@ -175,7 +404,9 @@
           <div>
             <a data-email href="mailto:hello@example.com">hello@example.com</a
             ><a data-link="privacy" href="privacy.html">Privacy</a
-            ><a data-link="terms" href="terms.html">Terms</a>
+            ><a data-link="terms" href="terms.html">Terms</a
+            ><a data-link="cookies" href="cookies.html">Cookies</a
+            ><button type="button" data-cookie-settings hidden>Cookie settings</button>
           </div>
         </div>
       </div>

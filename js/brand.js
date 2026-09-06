@@ -15,6 +15,26 @@ export function validateConfig(c) {
     if (typeof c.brand?.[key] !== 'string') throw new Error(`Missing brand.${key}`);
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.brand.email)) throw new Error('Invalid contact email.');
+  if (c.legal !== undefined) {
+    if (!c.legal || typeof c.legal !== 'object' || Array.isArray(c.legal))
+      throw new Error('Invalid legal settings.');
+    for (const [key, value] of Object.entries(c.legal)) {
+      if (typeof value !== 'string') throw new Error(`Invalid legal.${key}`);
+    }
+    if (c.legal.privacyEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.legal.privacyEmail))
+      throw new Error('Invalid privacy email.');
+    if (c.legal.updatedOn) {
+      const date = new Date(`${c.legal.updatedOn}T00:00:00Z`);
+      if (
+        !/^\d{4}-\d{2}-\d{2}$/.test(c.legal.updatedOn) ||
+        !Number.isFinite(date.getTime()) ||
+        date.toISOString().slice(0, 10) !== c.legal.updatedOn
+      )
+        throw new Error('Use a valid YYYY-MM-DD date for legal.updatedOn.');
+    }
+    if (c.legal.supervisoryAuthorityUrl && !safeLink(c.legal.supervisoryAuthorityUrl))
+      throw new Error('Invalid supervisory authority URL.');
+  }
   for (const key of ['primary', 'blue', 'red', 'yellow', 'green', 'ink', 'muted', 'surface']) {
     if (!/^#[0-9a-f]{6}$/i.test(c.colors?.[key] || '')) throw new Error(`Invalid color: ${key}`);
   }
@@ -33,6 +53,8 @@ export function validateConfig(c) {
     if (typeof c.links?.[key] !== 'string' || !safeLink(c.links[key]))
       throw new Error(`Invalid link: ${key}`);
   }
+  if (c.links.cookies !== undefined && !safeLink(c.links.cookies))
+    throw new Error('Invalid cookies link.');
   if (
     !c.features ||
     typeof c.features.showIllustrativeCases !== 'boolean' ||
@@ -41,6 +63,7 @@ export function validateConfig(c) {
     throw new Error('Invalid features.');
   return c;
 }
+const legalFallbacks = new WeakMap();
 export function applyBrand(c) {
   for (const [key, value] of Object.entries(c.colors))
     document.documentElement.style.setProperty(`--${key}`, value);
@@ -70,7 +93,11 @@ export function applyBrand(c) {
   });
   document.querySelectorAll('[data-link]').forEach((el) => {
     const href = safeLink(c.links[el.dataset.link]);
-    if (href) el.href = href;
+    if (href) {
+      const url = new URL(href);
+      if (el.dataset.linkFragment) url.hash = el.dataset.linkFragment;
+      el.href = url.href;
+    }
   });
   document.querySelectorAll('[data-tracking-link]').forEach((el) => {
     const href = safeLink(c.links.audit);
@@ -83,6 +110,44 @@ export function applyBrand(c) {
   document.querySelectorAll('[data-email]').forEach((el) => {
     el.textContent = c.brand.email;
     el.href = `mailto:${c.brand.email}`;
+  });
+  document.querySelectorAll('[data-legal]').forEach((el) => {
+    if (!legalFallbacks.has(el))
+      legalFallbacks.set(el, { text: el.textContent, dateTime: el.getAttribute('datetime') });
+    const value = c.legal?.[el.dataset.legal]?.trim();
+    const fallback = legalFallbacks.get(el);
+    el.textContent = value || fallback.text;
+    if (el.dataset.legal === 'updatedOn' && !value && fallback.dateTime)
+      el.dateTime = fallback.dateTime;
+    if (el.dataset.legal === 'updatedOn' && value) {
+      el.dateTime = value;
+      el.textContent = new Intl.DateTimeFormat('en', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC',
+      }).format(new Date(`${value}T00:00:00Z`));
+    }
+  });
+  document.querySelectorAll('[data-legal-optional]').forEach((el) => {
+    el.hidden = !c.legal?.[el.dataset.legalOptional]?.trim();
+  });
+  document.querySelectorAll('[data-privacy-email]').forEach((el) => {
+    const email = c.legal?.privacyEmail || c.brand.email;
+    el.textContent = email;
+    el.href = `mailto:${email}`;
+  });
+  document.querySelectorAll('[data-business-website]').forEach((el) => {
+    const href = safeLink(c.brand.website);
+    el.textContent = c.brand.website;
+    if (href) el.href = href;
+    else el.removeAttribute('href');
+  });
+  document.querySelectorAll('[data-authority-link]').forEach((el) => {
+    const href = safeLink(c.legal?.supervisoryAuthorityUrl);
+    el.hidden = !href;
+    if (href) el.href = href;
+    else el.removeAttribute('href');
   });
   document.querySelectorAll('[data-year]').forEach((el) => {
     el.textContent = String(new Date().getFullYear());

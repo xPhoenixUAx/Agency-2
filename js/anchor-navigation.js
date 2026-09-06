@@ -11,6 +11,7 @@ const sitePages = new Set([
   'audit.html',
   'privacy.html',
   'terms.html',
+  'cookies.html',
 ]);
 const pagePath = (pathname) => pathname.replace(/\/index\.html$/, '/');
 const samePage = (a, b) =>
@@ -37,6 +38,7 @@ function scrollToTarget(target) {
 }
 
 function consumeIntent() {
+  if (!window.signalCookiePreferences?.allowsNavigationStorage()) return null;
   try {
     const saved = sessionStorage.getItem(intentKey);
     sessionStorage.removeItem(intentKey);
@@ -105,6 +107,7 @@ export function initAnchorNavigation() {
     if (!samePage(url, new URL(location.href))) {
       if (!sitePages.has(url.pathname.split('/').pop() || 'index.html')) return;
       const motion = allowsNavigationMotion();
+      if (!window.signalCookiePreferences?.allowsNavigationStorage()) return;
       try {
         sessionStorage.setItem(
           transitionKey,

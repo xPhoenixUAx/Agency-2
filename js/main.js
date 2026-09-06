@@ -1,4 +1,5 @@
 import { configReady } from './brand.js';
+import { initCookieBanner } from './cookie-banner.js';
 import { initAnchorNavigation } from './anchor-navigation.js';
 import {
   initMotion,
@@ -197,6 +198,7 @@ document.querySelectorAll('nav a').forEach((link) => {
 });
 
 const completeAnchorNavigation = initAnchorNavigation();
+initCookieBanner();
 configReady
   .then(initMotion)
   .catch(() => {

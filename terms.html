@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-page-title="Terms of use">
+<html lang="en" data-page-title="Terms of Use">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
@@ -8,20 +8,21 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="Terms of use. Google Ads management, measurement and automation built around your business goals."
+      content="The terms for using our website, requesting an audit and exploring our services."
     />
-    <meta name="robots" content="noindex" />
-    <title>Terms of use | SIGNAL</title>
+    <title>Terms of Use | SIGNAL</title>
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/pages/audit.css" />
+    <link rel="stylesheet" href="css/pages/legal.css" />
     <link rel="preload" href="assets/fonts/Inter.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="css/visuals.css" />
     <link rel="stylesheet" href="css/motion.css" />
+    <link rel="stylesheet" href="css/cookies.css" />
+    <script src="js/cookie-preferences.js"></script>
     <script src="js/page-transition.js"></script>
     <script type="module" src="js/main.js"></script>
   </head>
-  <body class="page-audit">
+  <body class="page-legal">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container">
@@ -125,22 +126,225 @@
     <main id="main">
       <section id="legal" class="section">
         <div class="container">
-          <div class="legal-copy">
-            <h1>Terms of use</h1>
-            <p class="notice">
-              <strong>Draft — approved company text is required before launch.</strong>
-            </p>
-            <p>This is a placeholder, not a complete policy or contract.</p>
-            <h2>Company details</h2>
-            <p>
-              <span data-brand="legalName">Your registered company name</span><br /><span
-                data-brand="address"
-                >Your business address</span
-              >
-            </p>
-            <p>Contact: <a data-email href="mailto:hello@example.com">hello@example.com</a></p>
-            <a href="audit.html">Back to the audit form</a>
-          </div>
+          <article class="legal-copy">
+            <header class="legal-header">
+              <p class="eyebrow">Legal information</p>
+              <h1>Terms of Use</h1>
+              <p class="legal-intro">
+                The terms for using our website, requesting an audit and exploring our services.
+              </p>
+              <p class="legal-updated">
+                Last updated:
+                <time data-legal="updatedOn" datetime="2026-09-06">6 September 2026</time>
+              </p>
+            </header>
+            <nav class="legal-toc" aria-label="On this page">
+              <p>On this page</p>
+              <div>
+                <a href="#operator">Website operator</a>
+                <a href="#services">Services and enquiries</a>
+                <a href="#audit">Free audits and account access</a>
+                <a href="#results">Performance information</a>
+                <a href="#acceptable-use">Acceptable use</a>
+                <a href="#ownership">Website content and third-party services</a>
+                <a href="#availability">Accuracy and availability</a>
+                <a href="#responsibility">Responsibility and legal protections</a>
+                <a href="#privacy">Privacy and cookies</a>
+                <a href="#law">Questions, disputes and changes</a>
+              </div>
+            </nav>
+            <section id="operator" class="legal-section" aria-labelledby="operator-title">
+              <h2 id="operator-title">Website operator</h2>
+              <p>
+                This website is operated by
+                <span data-brand="legalName">Your registered company name</span>, trading as
+                <span data-brand="name">SIGNAL</span> (“we”, “us”). These terms cover use of this
+                website and requests made through it.
+              </p>
+              <dl class="legal-details">
+                <div>
+                  <dt>Legal entity</dt>
+                  <dd data-brand="legalName">Your registered company name</dd>
+                </div>
+                <div>
+                  <dt>Trading name</dt>
+                  <dd data-brand="name">SIGNAL</dd>
+                </div>
+                <div>
+                  <dt>Business address</dt>
+                  <dd data-brand="address">Your business address</dd>
+                </div>
+                <div data-legal-optional="registeredCountry" hidden>
+                  <dt>Country of registration</dt>
+                  <dd data-legal="registeredCountry"></dd>
+                </div>
+                <div data-legal-optional="registrationNumber" hidden>
+                  <dt>Registration number</dt>
+                  <dd data-legal="registrationNumber"></dd>
+                </div>
+                <div data-legal-optional="taxNumber" hidden>
+                  <dt>Tax / VAT number</dt>
+                  <dd data-legal="taxNumber"></dd>
+                </div>
+                <div>
+                  <dt>Email</dt>
+                  <dd><a data-email href="mailto:hello@example.com">hello@example.com</a></dd>
+                </div>
+                <div>
+                  <dt>Website</dt>
+                  <dd>
+                    <a data-business-website href="https://example.com">https://example.com</a>
+                  </dd>
+                </div>
+              </dl>
+            </section>
+            <section id="services" class="legal-section" aria-labelledby="services-title">
+              <h2 id="services-title">Services and enquiries</h2>
+              <p>
+                We describe Google Ads management, tracking, analytics and marketing automation
+                services on this website. Descriptions provide an overview; the scope, deliverables,
+                fees, advertising budget, responsibilities and timing of paid work are agreed
+                separately in writing.
+              </p>
+              <p>
+                Submitting an enquiry or requesting a free audit does not create a paid engagement,
+                authorise spending or give us access to your accounts. We review requests and
+                confirm whether we can help. An audit request does not oblige you to buy services.
+              </p>
+              <p>
+                Before any paid work begins, the service agreement will address payment,
+                cancellation, termination, ownership of deliverables and any data processing
+                arrangements. These website terms do not replace that agreement or change an
+                existing engagement.
+              </p>
+            </section>
+            <section id="audit" class="legal-section" aria-labelledby="audit-title">
+              <h2 id="audit-title">Free audits and account access</h2>
+              <p>
+                A free audit is an initial assessment of the information available to us. Its
+                coverage depends on the details and access you choose to provide; it is not an
+                exhaustive review of every campaign, technical system or legal requirement.
+              </p>
+              <p>
+                Only share information or grant access that you are authorised to provide. Use the
+                platform’s access controls when account access is agreed; do not send passwords
+                through our form. Requesting an audit does not authorise changes to campaigns,
+                tracking or budgets.
+              </p>
+            </section>
+            <section id="results" class="legal-section" aria-labelledby="results-title">
+              <h2 id="results-title">Performance information</h2>
+              <p>
+                Advertising outcomes depend on factors including market conditions, competition,
+                budget, offer, website quality, tracking and platform decisions. We do not promise a
+                particular ranking, revenue, return on advertising spend or number of leads.
+              </p>
+              <p>
+                Any past results relate to their stated circumstances and do not guarantee future
+                results. Examples labelled illustrative demonstrate an approach or reporting format;
+                they are not presented as verified client outcomes.
+              </p>
+            </section>
+            <section
+              id="acceptable-use"
+              class="legal-section"
+              aria-labelledby="acceptable-use-title"
+            >
+              <h2 id="acceptable-use-title">Acceptable use</h2>
+              <p>
+                You may use the website to learn about our services and make legitimate enquiries.
+                Information you submit should be accurate to the best of your knowledge and shared
+                with appropriate authority.
+              </p>
+              <p>
+                Do not use the website to distribute spam or unlawful material, impersonate another
+                person, introduce harmful code, bypass security controls or disrupt the service. We
+                may limit requests or access where reasonably necessary to protect the website or
+                others.
+              </p>
+            </section>
+            <section id="ownership" class="legal-section" aria-labelledby="ownership-title">
+              <h2 id="ownership-title">Website content and third-party services</h2>
+              <p>
+                Website content is owned by us or used with permission or under the relevant
+                licence. You may view it and keep reasonable copies for evaluating our services or
+                your own internal business use. Other reuse requires permission unless allowed by
+                law or an applicable licence. Third-party names, logos and trademarks belong to
+                their owners.
+              </p>
+              <p>
+                References to Google and other platforms identify the services we work with. They do
+                not by themselves mean that a platform sponsors, endorses or certifies our business.
+                External websites and advertising platforms have their own terms and policies, which
+                apply when you use them.
+              </p>
+            </section>
+            <section id="availability" class="legal-section" aria-labelledby="availability-title">
+              <h2 id="availability-title">Accuracy and availability</h2>
+              <p>
+                We aim to keep the website accurate and available, but content can become outdated
+                and access may be interrupted by maintenance, faults or events outside our control.
+                Contact us to confirm details relevant to a decision or to report an error.
+              </p>
+              <p>
+                General website information and initial observations should be assessed in the
+                context of your own business. Any commitments about a paid service are set out in
+                the applicable service agreement.
+              </p>
+            </section>
+            <section
+              id="responsibility"
+              class="legal-section"
+              aria-labelledby="responsibility-title"
+            >
+              <h2 id="responsibility-title">Responsibility and legal protections</h2>
+              <p>
+                Each party remains responsible for its obligations under applicable law. Nothing in
+                these terms excludes liability for fraud, deliberate misconduct or any liability
+                that cannot lawfully be excluded or limited. Nothing removes mandatory consumer
+                protections where they apply.
+              </p>
+              <p>
+                Liability for paid services is addressed in the service agreement, subject to
+                applicable law.
+              </p>
+            </section>
+            <section id="privacy" class="legal-section" aria-labelledby="privacy-title">
+              <h2 id="privacy-title">Privacy and cookies</h2>
+              <p>
+                Our <a data-link="privacy" href="privacy.html">Privacy Policy</a> explains how we
+                handle enquiries and personal information. Our
+                <a data-link="cookies" href="cookies.html">Cookie Policy</a> describes cookies and
+                temporary browser storage. Acknowledging the privacy notice on the audit form does
+                not constitute marketing consent.
+              </p>
+            </section>
+            <section id="law" class="legal-section" aria-labelledby="law-title">
+              <h2 id="law-title">Questions, disputes and changes</h2>
+              <p>
+                Please contact
+                <a data-email href="mailto:hello@example.com">hello@example.com</a> about these
+                terms or a concern so we can try to resolve it.
+              </p>
+              <p>
+                Applicable law determines the rights and remedies available and which courts have
+                jurisdiction. These terms do not prevent you from exercising mandatory rights or
+                contacting a competent authority.
+              </p>
+              <p data-legal-optional="governingLaw" data-legal="governingLaw" hidden></p>
+              <p>
+                We may update these website terms to reflect changes to the site, our services or
+                legal requirements. The date above identifies the current version. Updates do not
+                retrospectively change an agreed service contract. If a provision cannot be
+                enforced, the remaining provisions continue to apply to the extent permitted by law.
+              </p>
+            </section>
+            <nav class="legal-related" aria-label="Related legal information">
+              <a data-link="privacy" href="privacy.html">Privacy Policy</a
+              ><a data-link="terms" href="terms.html">Terms of Use</a
+              ><a data-link="cookies" href="cookies.html">Cookie Policy</a>
+            </nav>
+          </article>
         </div>
       </section>
     </main>
@@ -165,7 +369,9 @@
           <div>
             <a data-email href="mailto:hello@example.com">hello@example.com</a
             ><a data-link="privacy" href="privacy.html">Privacy</a
-            ><a data-link="terms" href="terms.html">Terms</a>
+            ><a data-link="terms" href="terms.html">Terms</a
+            ><a data-link="cookies" href="cookies.html">Cookies</a
+            ><button type="button" data-cookie-settings hidden>Cookie settings</button>
           </div>
         </div>
       </div>

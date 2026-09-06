@@ -30,7 +30,29 @@ const labels = {
     success: 'Повідомлення після успішного надсилання',
     footer: 'Текст у футері',
   },
-  links: { audit: 'Сторінка аудиту', privacy: 'Політика приватності', terms: 'Умови використання' },
+  links: {
+    audit: 'Сторінка аудиту',
+    privacy: 'Політика приватності',
+    terms: 'Умови використання',
+    cookies: 'Політика cookies',
+  },
+  legal: {
+    updatedOn: 'Дата оновлення політик (YYYY-MM-DD)',
+    registeredCountry: 'Країна реєстрації (необов’язково)',
+    registrationNumber: 'Реєстраційний номер (необов’язково)',
+    taxNumber: 'Податковий / VAT номер (необов’язково)',
+    privacyEmail: 'Пошта з питань приватності (порожньо — основна пошта)',
+    privacyContactDetails: 'Контакти DPO / представника, якщо застосовно',
+    providers: 'Хостинг, пошта та інші отримувачі даних',
+    internationalTransfers: 'Міжнародна обробка даних і гарантії',
+    enquiryRetention: 'Зберігання заявок і листування',
+    technicalRetention: 'Зберігання технічних записів',
+    clientRetention: 'Зберігання даних клієнтських проєктів',
+    governingLaw: 'Умова про застосовне право, якщо погоджена',
+    supervisoryAuthority: 'Назва органу захисту даних (необов’язково)',
+    supervisoryAuthorityUrl: 'Посилання на орган захисту даних (необов’язково)',
+    additionalCookieDetails: 'Додаткові cookies хостингу / CDN, якщо є',
+  },
   form: { businessTypes: 'Типи бізнесу', budgets: 'Рекламні бюджети', needs: 'Потрібна допомога' },
 };
 const containers = {
@@ -39,9 +61,13 @@ const containers = {
   content: 'text-fields',
   links: 'link-fields',
   form: 'option-fields',
+  legal: 'legal-fields',
 };
 labels.content.trackingCta = 'Кнопка перевірки аналітики';
 function render(c) {
+  c = structuredClone(c);
+  c.legal ??= {};
+  c.links.cookies ??= 'cookies.html';
   source = structuredClone(c);
   for (const [group, fields] of Object.entries(labels)) {
     const container = document.getElementById(containers[group]);
@@ -53,16 +79,35 @@ function render(c) {
       l.htmlFor = `${group}-${key}`;
       l.textContent = label;
       const field = document.createElement(
-        group === 'form' || ['heroDescription', 'success', 'footer'].includes(key)
+        group === 'form' ||
+          (group === 'legal' &&
+            [
+              'providers',
+              'internationalTransfers',
+              'enquiryRetention',
+              'technicalRetention',
+              'clientRetention',
+              'governingLaw',
+              'privacyContactDetails',
+              'additionalCookieDetails',
+            ].includes(key)) ||
+          ['heroDescription', 'success', 'footer'].includes(key)
           ? 'textarea'
           : 'input',
       );
       field.id = l.htmlFor;
       field.name = `${group}.${key}`;
-      field.value = Array.isArray(c[group][key]) ? c[group][key].join('\n') : c[group][key];
+      field.value = Array.isArray(c[group][key]) ? c[group][key].join('\n') : (c[group][key] ?? '');
       if (field.tagName === 'INPUT')
-        field.type = group === 'colors' ? 'color' : key === 'email' ? 'email' : 'text';
-      field.required = !(group === 'brand' && key === 'logo');
+        field.type =
+          group === 'colors'
+            ? 'color'
+            : ['email', 'privacyEmail'].includes(key)
+              ? 'email'
+              : key === 'updatedOn'
+                ? 'date'
+                : 'text';
+      field.required = group !== 'legal' && !(group === 'brand' && key === 'logo');
       wrapper.append(l, field);
       container.append(wrapper);
     }

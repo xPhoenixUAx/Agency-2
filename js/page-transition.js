@@ -5,8 +5,9 @@
   const key = 'signal:page-transition';
   let intent = null;
   try {
-    const saved = JSON.parse(sessionStorage.getItem(key));
-    sessionStorage.removeItem(key);
+    const canStoreNavigation = window.signalCookiePreferences?.allowsNavigationStorage();
+    const saved = canStoreNavigation ? JSON.parse(sessionStorage.getItem(key)) : null;
+    if (canStoreNavigation) sessionStorage.removeItem(key);
     if (saved && Number.isFinite(saved.created) && Date.now() - saved.created < 60000) {
       const target = new URL(saved.href);
       const path = (value) => value.replace(/\/index\.html$/, '/');

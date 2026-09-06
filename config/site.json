@@ -30,7 +30,8 @@
   "links": {
     "audit": "audit.html",
     "privacy": "privacy.html",
-    "terms": "terms.html"
+    "terms": "terms.html",
+    "cookies": "cookies.html"
   },
   "form": {
     "businessTypes": [
@@ -56,5 +57,22 @@
   "features": {
     "showIllustrativeCases": true,
     "animations": true
+  },
+  "legal": {
+    "updatedOn": "2026-09-06",
+    "registrationNumber": "",
+    "taxNumber": "",
+    "registeredCountry": "",
+    "privacyEmail": "",
+    "privacyContactDetails": "",
+    "providers": "We use website hosting and email delivery providers to operate this website and receive enquiries. These providers process information needed to deliver their services. Access is limited to the people and providers who need it for the purposes described here.",
+    "internationalTransfers": "Service providers may process information in countries other than your own. Where applicable law restricts international transfers, we use the safeguards it requires, such as recognised adequacy decisions or contractual safeguards. Contact us for information about the arrangements relevant to your data and how to obtain a copy of applicable safeguards.",
+    "enquiryRetention": "We retain enquiries and related correspondence while responding to your request and considering or managing a business relationship. We review whether the information is still needed when the enquiry is resolved or discussions end, taking account of outstanding follow-up, applicable record-keeping duties and the time needed to establish or defend legal claims. Information that is no longer needed is deleted or anonymised.",
+    "technicalRetention": "Form security tokens expire after one hour. Request-limit records use a ten-minute activity window; inactive records become eligible for periodic cleanup after 24 hours. Hosting logs and backups follow the hosting provider’s retention arrangements, taking account of security investigations, recovery needs and applicable legal duties.",
+    "clientRetention": "If an enquiry becomes a client engagement, records needed to deliver the service, maintain accounts or handle legal claims are retained for the relevant contractual and legally required periods. The service agreement and any data processing agreement provide further details.",
+    "governingLaw": "",
+    "supervisoryAuthority": "",
+    "supervisoryAuthorityUrl": "",
+    "additionalCookieDetails": ""
   }
 }
