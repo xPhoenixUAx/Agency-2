@@ -83,6 +83,9 @@ export function initScrollDecor(signal, allowed) {
   layer.className = 'scroll-decor';
   layer.setAttribute('aria-hidden', 'true');
   layer.inert = true;
+  const world = document.createElement('div');
+  world.className = 'scroll-decor-world';
+  layer.append(world);
   document.body.append(layer);
 
   let physics;
@@ -101,7 +104,15 @@ export function initScrollDecor(signal, allowed) {
   let presenceVelocity = 0;
   let furthest = savedPile?.furthest || 0;
   let needsMeasure = true;
+  let lastPresence;
+  let lastShift;
+  let lastHeight;
   const timestep = 1000 / 120;
+
+  const setActive = (active) => {
+    const value = String(active);
+    if (layer.dataset.active !== value) layer.dataset.active = value;
+  };
 
   const measure = () => {
     const bounds = container.getBoundingClientRect();
@@ -136,13 +147,38 @@ export function initScrollDecor(signal, allowed) {
       end: footer ? footer.getBoundingClientRect().top + scrollY : document.body.scrollHeight,
     };
     layer.style.top = `${top}px`;
+    world.style.height = `${height}px`;
     needsMeasure = false;
   };
 
   const draw = () => {
-    for (const { body, element, radius } of balls) {
+    for (const ball of balls) {
+      const { body, element, radius } = ball;
+      if (body.isSleeping && ball.lastTransform) continue;
       const { x, y } = body.position;
-      element.style.transform = `translate3d(${(x - radius).toFixed(2)}px, ${(y - radius).toFixed(2)}px, 0) rotate(${body.angle.toFixed(4)}rad)`;
+      const transform = `translate3d(${(x - radius).toFixed(2)}px, ${(y - radius).toFixed(2)}px, 0) rotate(${body.angle.toFixed(4)}rad)`;
+      if (transform !== ball.lastTransform) {
+        element.style.transform = transform;
+        ball.lastTransform = transform;
+      }
+    }
+  };
+
+  const present = (visibleHeight) => {
+    const opacity = presence.toFixed(4);
+    // Move the rendered world above the footer; its physical floor stays fixed.
+    const shift = ((1 - presence) * 72 + visibleHeight - geometry.height).toFixed(2);
+    if (opacity !== lastPresence) {
+      layer.style.opacity = opacity;
+      lastPresence = opacity;
+    }
+    if (shift !== lastShift) {
+      world.style.transform = `translate3d(0, ${shift}px, 0)`;
+      lastShift = shift;
+    }
+    if (visibleHeight !== lastHeight) {
+      layer.style.height = `${visibleHeight}px`;
+      lastHeight = visibleHeight;
     }
   };
 
@@ -166,10 +202,12 @@ export function initScrollDecor(signal, allowed) {
         const origin = ball.side ? width - gutter : 0;
         const fraction = (ball.body.position.x - oldOrigin) / worldGeometry.gutter;
         const radius = (diameter * ball.scale) / 2;
-        Body.scale(ball.body, radius / ball.radius, radius / ball.radius);
-        ball.radius = radius;
-        ball.element.style.width = `${radius * 2}px`;
-        ball.element.style.height = `${radius * 2}px`;
+        if (radius !== ball.radius) {
+          Body.scale(ball.body, radius / ball.radius, radius / ball.radius);
+          ball.radius = radius;
+          ball.element.style.width = `${radius * 2}px`;
+          ball.element.style.height = `${radius * 2}px`;
+        }
         Body.setPosition(ball.body, {
           x: origin + clamp(fraction * gutter, radius + 10, gutter - radius - 10),
           y: Math.min(ball.body.position.y + floor - worldGeometry.floor, floor - radius),
@@ -226,9 +264,10 @@ export function initScrollDecor(signal, allowed) {
     image.alt = '';
     image.width = 80;
     image.height = 80;
+    image.decoding = 'async';
     image.draggable = false;
     element.append(image);
-    layer.append(element);
+    world.append(element);
     balls.push({ body, element, radius, scale, side });
     Composite.add(engine.world, body);
   };
@@ -246,9 +285,7 @@ export function initScrollDecor(signal, allowed) {
           velocityIterations: 8,
         });
         engine.gravity.y = 0.75;
-        syncWalls(
-          Math.max(80, Math.min(geometry.height, geometry.end - scrollY - geometry.top) - 16),
-        );
+        syncWalls(geometry.height - 16);
         if (savedPile) {
           savedPile.balls
             .slice(0, geometry.capacity)
@@ -259,7 +296,7 @@ export function initScrollDecor(signal, allowed) {
       })
       .catch(() => {
         failed = true;
-        layer.dataset.active = 'false';
+        setActive(false);
       });
   };
 
@@ -274,7 +311,7 @@ export function initScrollDecor(signal, allowed) {
     if (!hasRoom || failed) {
       presence = 0;
       presenceVelocity = 0;
-      layer.dataset.active = 'false';
+      setActive(false);
       accumulator = 0;
       return;
     }
@@ -295,20 +332,18 @@ export function initScrollDecor(signal, allowed) {
       presence = targetPresence;
       presenceVelocity = 0;
     }
-    layer.style.setProperty('--decor-presence', presence.toFixed(4));
-    layer.style.setProperty('--decor-offset', `${((1 - presence) * 72).toFixed(2)}px`);
-    layer.dataset.active = String(presence > 0 || targetPresence > 0);
+    present(visibleHeight);
+    setActive(presence > 0 || targetPresence > 0);
     if (presence === 0 && targetPresence === 0) {
       accumulator = 0;
       return;
     }
-    layer.style.height = `${visibleHeight}px`;
     if (!engine) {
       startPhysics();
       if (revealing) frame = requestAnimationFrame(update);
       return;
     }
-    syncWalls(visibleHeight - 16);
+    syncWalls(geometry.height - 16);
     furthest = Math.max(furthest, scrollY - geometry.start);
     const spacing = Math.max(
       80,
@@ -320,12 +355,16 @@ export function initScrollDecor(signal, allowed) {
       addBall(balls.length);
       nextDrop = time + 260;
     }
-    accumulator += elapsed;
-    while (accumulator >= timestep) {
-      physics.Engine.update(engine, timestep);
-      accumulator -= timestep;
+    if (balls.some(({ body }) => !body.isSleeping)) {
+      accumulator += elapsed;
+      while (accumulator >= timestep) {
+        physics.Engine.update(engine, timestep);
+        accumulator -= timestep;
+      }
+      draw();
+    } else {
+      accumulator = 0;
     }
-    draw();
     if (revealing || canDrop || balls.some(({ body }) => !body.isSleeping)) {
       frame = requestAnimationFrame(update);
     }
