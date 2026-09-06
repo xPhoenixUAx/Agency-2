@@ -133,6 +133,57 @@ html[data-animations='off']::view-transition-new(*) {
     left: calc(100% + 2px);
   }
 }
+.scroll-decor {
+  display: none;
+  position: fixed;
+  inset-inline: 0;
+  z-index: 2;
+  overflow: clip;
+  pointer-events: none;
+  contain: layout paint;
+}
+html[data-motion='on'] .scroll-decor[data-active='true'] {
+  display: block;
+}
+.scroll-decor-ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--ball-tint) 20%, white);
+  background: radial-gradient(
+    circle at 32% 25%,
+    white 20%,
+    color-mix(in srgb, var(--ball-tint) 12%, white) 75%,
+    color-mix(in srgb, var(--ball-tint) 24%, white)
+  );
+  box-shadow:
+    inset 0 2px 4px #fff,
+    inset -2px -3px 5px #2021240d,
+    0 3px 7px #2021241c;
+}
+.scroll-decor-ball img {
+  width: 84%;
+  height: 84%;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  user-select: none;
+}
+.scroll-decor-ball--brand img {
+  width: 66%;
+  height: 66%;
+  object-fit: contain;
+  border-radius: 0;
+}
+html[data-motion='on'] .search-scene::before {
+  rotate: var(--hero-orbit, 0deg);
+}
+html[data-motion='on'] .search-scene::after {
+  rotate: calc(-1 * var(--hero-orbit, 0deg));
+}
 html[data-motion='on'] .button,
 html[data-motion='on'] .text-link {
   transition:
@@ -166,7 +217,9 @@ summary:focus-visible {
   html[data-motion='on'] .text-link:hover .arrow-icon {
     translate: 2px 0;
   }
-  html[data-motion='on'] .card--interactive {
+  html[data-motion='on'] .card--interactive,
+  html[data-motion='on'] .home-automation-card,
+  html[data-motion='on'] .audience-details > li {
     transition:
       transform var(--motion-ui) var(--ease-standard),
       border-color var(--motion-feedback),
@@ -176,6 +229,10 @@ summary:focus-visible {
     transform: translateY(var(--card-lift));
     border-color: var(--primary);
     box-shadow: 0 5px 16px color-mix(in srgb, var(--ink) 7%, transparent);
+  }
+  html[data-motion='on'] .home-automation-card:hover,
+  html[data-motion='on'] .audience-details > li:hover {
+    transform: translateY(-4px);
   }
 }
 html[data-motion='on'] .site-header {

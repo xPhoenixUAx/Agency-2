@@ -96,12 +96,6 @@
   height: 32px;
   background: none;
 }
-.page-tracking .faq-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-  gap: 48px;
-  align-items: start;
-}
 .page-tracking .faq .section-heading {
   display: block;
 }
@@ -110,8 +104,7 @@
 }
 @media (max-width: 1199px) {
   .page-tracking .service-hero,
-  .automation-layout,
-  .page-tracking .faq-layout {
+  .automation-layout {
     grid-template-columns: 1fr;
   }
   .capability-grid {
@@ -132,9 +125,6 @@
   .ai-note {
     grid-column: auto;
     grid-row: auto;
-  }
-  .page-tracking .faq-layout {
-    gap: 16px;
   }
   .four-nodes strong {
     font-size: 17px;

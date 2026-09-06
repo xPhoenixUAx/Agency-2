@@ -229,6 +229,11 @@ h3 {
 .service-grid .content-card > .icon-shell {
   width: 112px;
   height: 112px;
+  /* Blend the animated layer itself so the raster's white background stays invisible. */
+  mix-blend-mode: multiply;
+}
+.service-grid .icon-shell img {
+  mix-blend-mode: normal;
 }
 .service-grid .content-card p {
   margin-bottom: 8px;
@@ -352,11 +357,16 @@ h3 {
 .page-home .faq {
   padding-block: 44px;
 }
-.faq .section-heading {
-  margin-bottom: 22px;
+.faq-layout {
+  max-width: 800px;
+  margin-inline: auto;
 }
-.faq details {
-  margin-block: 10px;
+.faq .section-heading {
+  display: block;
+  margin-bottom: 28px;
+}
+.faq .section-heading p {
+  margin-top: 12px;
 }
 .faq summary {
   font-weight: 500;
@@ -371,11 +381,12 @@ h3 {
   flex: 1;
 }
 .cta-panel .cta-decor {
-  display: flex;
-  flex: 0 0 100px;
-  gap: 14px;
-  align-items: center;
-  align-self: stretch;
+  display: grid;
+  flex: 0 0 56px;
+  grid-template-columns: 20px 26px;
+  grid-template-rows: repeat(2, 20px);
+  gap: 12px 10px;
+  align-self: center;
   position: relative;
 }
 .cta-decor i {
@@ -384,20 +395,20 @@ h3 {
   height: 20px;
   background: var(--blue);
   border-radius: 5px;
-  align-self: flex-start;
-  margin-top: 8px;
 }
 .cta-decor i:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
   background: var(--red);
   border-radius: 50%;
-  align-self: center;
 }
 .cta-decor i:nth-child(3) {
+  grid-column: 2;
+  grid-row: 1 / 3;
   background: var(--yellow);
   width: 26px;
   height: 52px;
   border-radius: 0 60px 60px 0;
-  align-self: flex-end;
 }
 .cta-panel .button {
   min-width: 250px;
@@ -601,9 +612,8 @@ h3 {
   gap: 14px;
 }
 .outcomes-faq .faq summary {
-  font-size: 14px;
-  line-height: 22px;
-  padding: 16px 36px 16px 16px;
+  font-size: 16px;
+  line-height: 26px;
 }
 .page-google-ads #outcomes .content-card {
   display: block;
@@ -690,9 +700,6 @@ h3 {
 }
 .page-tracking .faq {
   padding-block: 24px;
-}
-.page-tracking .faq-layout {
-  align-items: center;
 }
 .page-tracking .faq h2 {
   font-size: 34px;
@@ -865,13 +872,6 @@ h3 {
 .page-audit .process-symbol .icon-shell {
   width: 100px;
   height: 100px;
-}
-.page-audit #next .step-number {
-  width: 34px;
-  height: 34px;
-  font-size: 18px;
-  background: var(--tone);
-  color: white;
 }
 .page-audit #next .process-list li:not(:last-child)::after {
   top: 45%;
@@ -1544,13 +1544,6 @@ summary {
 }
 .page-tracking #setup .illustrated-step .step-number::after {
   content: '.';
-}
-.page-audit #next .illustrated-step .step-number {
-  width: 28px;
-  height: 28px;
-  font-size: 16px;
-  margin: 0;
-  flex-shrink: 0;
 }
 .page-audit #next .process-list h3 {
   font-size: 20px;

@@ -482,13 +482,26 @@ dialog::backdrop {
 }
 .faq details {
   padding: 0;
-  border-color: var(--border);
-  border-radius: 12px;
-  margin: 12px 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  margin: 0;
 }
 .faq details[open] {
-  background: color-mix(in srgb, var(--surface) 70%, white);
-  border-color: color-mix(in srgb, var(--blue) 25%, white);
+  background: transparent;
+}
+.faq summary {
+  padding: 22px 40px 22px 0;
+}
+.faq summary:hover,
+.faq details[open] > summary {
+  color: var(--primary);
+}
+.faq summary > .chevron {
+  right: 4px;
+  top: 26px;
+  width: 18px;
+  height: 18px;
 }
 summary {
   position: relative;
@@ -514,7 +527,8 @@ details[open] > summary > .chevron {
   transform: rotate(180deg);
 }
 .faq details p {
-  padding: 0 24px 22px;
+  max-width: 70ch;
+  padding: 0 40px 24px 0;
   margin: 0;
   font-size: 16px;
   line-height: 26px;
@@ -966,15 +980,18 @@ details[open] > summary > .chevron {
     padding-top: 0;
   }
   .faq summary {
-    padding: 16px 42px 16px 18px;
+    padding: 20px 32px 20px 0;
     font-size: 16px;
+  }
+  .faq summary > .chevron {
+    top: 24px;
   }
   .chevron {
     right: 14px;
     top: 20px;
   }
   .faq details p {
-    padding: 0 18px 18px;
+    padding: 0 24px 20px 0;
   }
   .footer-top,
   .footer-bottom {

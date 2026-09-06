@@ -1,4 +1,5 @@
 import { prepareScenes, sceneParts, playScene as runScene, typeSearch } from './motion-scenes.js';
+import { initScrollDecor } from './scroll-decor.js';
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const mobile = matchMedia('(max-width: 767px)');
@@ -14,6 +15,8 @@ let revealObserver;
 let sceneObserver;
 let typingObserver;
 let typingRun;
+let heroScrollRun;
+let scrollDecorRun;
 let tokens;
 let sceneElements = [];
 let revealElements = [];
@@ -198,12 +201,93 @@ export function registerUIFinalizer(callback) {
 }
 
 export function cancelAllMotion() {
+  scrollDecorRun?.abort();
+  scrollDecorRun = null;
+  heroScrollRun?.abort();
+  heroScrollRun = null;
   typingRun?.abort();
   typingRun = null;
   for (const controller of sceneRuns.values()) controller.abort();
   sceneRuns.clear();
   for (const entry of [...active.values()]) entry.cancel();
   for (const finish of [...uiFinalizers]) finish();
+}
+
+function initSideDecor() {
+  if (!isMotionAllowed()) return;
+  scrollDecorRun = new AbortController();
+  initScrollDecor(scrollDecorRun.signal, isMotionAllowed);
+}
+
+function initHeroScroll() {
+  if (!isMotionAllowed() || tablet.matches) return;
+  const scene = document.querySelector('.page-home .search-scene');
+  const hero = scene?.closest('.hero');
+  if (!hero) return;
+  const controller = new AbortController();
+  heroScrollRun = controller;
+  let frame = 0;
+  let previousTime = 0;
+  let needsMeasure = false;
+  let velocity = 0;
+  const targetAngle = () => {
+    const progress = Math.min(
+      1,
+      Math.max(0, -hero.getBoundingClientRect().top / hero.offsetHeight),
+    );
+    return progress * 360;
+  };
+  let target = targetAngle();
+  let angle = target;
+  const render = () => scene.style.setProperty('--hero-orbit', `${angle.toFixed(3)}deg`);
+  const update = (time) => {
+    frame = 0;
+    if (!isMotionAllowed()) return;
+    if (needsMeasure) {
+      target = targetAngle();
+      needsMeasure = false;
+    }
+    const elapsed = Math.min((time - previousTime) / 1000, 0.064);
+    previousTime = time;
+    // A critically damped spring eases both acceleration and settling without a bounce.
+    // Time-based integration keeps the same feel on 60 Hz and high-refresh displays.
+    const response = 5.5;
+    const offset = angle - target;
+    const impulse = velocity + response * offset;
+    const decay = Math.exp(-response * elapsed);
+    angle = target + (offset + impulse * elapsed) * decay;
+    velocity = (velocity - response * impulse * elapsed) * decay;
+    if (Math.abs(angle - target) < 0.02 && Math.abs(velocity) < 0.05) {
+      angle = target;
+      velocity = 0;
+      render();
+      return;
+    }
+    render();
+    frame = requestAnimationFrame(update);
+  };
+  const schedule = () => {
+    needsMeasure = true;
+    if (!frame) {
+      previousTime = performance.now();
+      frame = requestAnimationFrame(update);
+    }
+  };
+  const options = { passive: true, signal: controller.signal };
+  window.addEventListener('scroll', schedule, options);
+  window.addEventListener('resize', schedule, options);
+  const observer = new ResizeObserver(schedule);
+  observer.observe(hero);
+  controller.signal.addEventListener(
+    'abort',
+    () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      scene.style.removeProperty('--hero-orbit');
+    },
+    { once: true },
+  );
+  render();
 }
 
 function initTyping() {
@@ -528,6 +612,8 @@ function refreshPolicy() {
     initReveals();
     initScenes();
     initTyping();
+    initHeroScroll();
+    initSideDecor();
   }
 }
 
@@ -563,6 +649,8 @@ export function initMotion(nextConfig) {
   initHero();
   initScenes();
   initTyping();
+  initHeroScroll();
+  initSideDecor();
   early = false;
   const options = { signal: lifetime.signal };
   reduced.addEventListener('change', refreshPolicy, options);

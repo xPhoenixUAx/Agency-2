@@ -65,6 +65,10 @@ button:disabled {
   outline: 3px solid var(--primary);
   outline-offset: 4px;
 }
+/* Anchor destinations keep focus without outlining the entire section. */
+section[tabindex='-1']:focus {
+  outline: none;
+}
 h1,
 h2,
 h3,
