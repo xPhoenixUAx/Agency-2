@@ -80,8 +80,10 @@ if (random_int(1, 100) === 1) {
 if (!empty($_POST['company_url'])) {
     reply(422, ['ok' => false, 'message' => 'Unable to process this request.']);
 }
-$config = json_decode((string) @file_get_contents(__DIR__ . '/../config/site.json'), true);
-if (!is_array($config)) {
+try {
+    require_once __DIR__ . '/site-config.php';
+    $config = site_config();
+} catch (Throwable $error) {
     reply(503, ['ok' => false, 'message' => 'The form is temporarily unavailable.']);
 }
 $limits = [
@@ -143,13 +145,8 @@ if ($errors) {
         'errors' => $errors,
     ]);
 }
-$serverFile = __DIR__ . '/server.php';
-if (!is_file($serverFile)) {
-    reply(503, ['ok' => false, 'message' => 'The form is temporarily unavailable.']);
-}
-$server = require $serverFile;
-$to = $server['recipient'] ?? '' ?: $config['brand']['email'] ?? '';
-$from = $server['from'] ?? '';
+$to = $config['mail']['recipient'] ?: $config['brand']['email'];
+$from = $config['mail']['from'] ?: $config['brand']['email'];
 foreach ([$to, $from] as $mailbox) {
     if (
         !is_string($mailbox) ||
@@ -163,13 +160,14 @@ foreach ([$to, $from] as $mailbox) {
         ]);
     }
 }
-$subject = 'Website audit request';
-$body = "New audit request\n\n";
+$subject = $config['mail']['subject'];
+$body = "New audit request for " . $config['brand']['name'] . "\n" .
+    "Website: " . $config['brand']['website'] . "\n\n";
 foreach ($data as $key => $value) {
     $body .= strtoupper(str_replace('_', ' ', $key)) . ":\n" . $value . "\n\n";
 }
 $headers = [
-    'From' => $from,
+    'From' => '=?UTF-8?B?' . base64_encode($config['brand']['name']) . '?= <' . $from . '>',
     'Reply-To' => $data['email'],
     'MIME-Version' => '1.0',
     'Content-Type' => 'text/plain; charset=UTF-8',
@@ -177,10 +175,14 @@ $headers = [
 $outbox = getenv('AGENCY_TEST_OUTBOX');
 if (getenv('AGENCY_ENV') === 'test' && is_string($outbox) && is_dir($outbox)) {
     $sent =
-        file_put_contents($outbox . '/' . bin2hex(random_bytes(12)) . '.txt', $body, LOCK_EX) !==
+        file_put_contents($outbox . '/' . bin2hex(random_bytes(12)) . '.json',
+            json_encode(['to' => $to, 'subject' => $subject, 'headers' => $headers, 'body' => $body],
+                JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX) !==
         false;
 } else {
-    $sent = function_exists('mail') && @mail($to, $subject, $body, $headers);
+    $encodedSubject = preg_match('/[^\x20-\x7E]/', $subject)
+        ? '=?UTF-8?B?' . base64_encode($subject) . '?=' : $subject;
+    $sent = function_exists('mail') && @mail($to, $encodedSubject, $body, $headers);
 }
 if (!$sent) {
     reply(503, [

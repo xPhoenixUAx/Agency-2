@@ -1,4 +1,3 @@
-import { configReady } from './brand.js';
 import { enterElement, isMotionAllowed } from './motion.js';
 
 export function initCookieBanner() {
@@ -137,12 +136,5 @@ export function initCookieBanner() {
   }
   modal.querySelector('[data-cookie-save]').addEventListener('click', () => save(toggle.checked));
   addEventListener('signal:cookie-preferences', update);
-  configReady
-    .then((config) => {
-      const url = new URL(config.links.cookies || 'cookies.html', document.baseURI);
-      for (const panel of [banner, modal])
-        panel.querySelector('.cookie-policy-link').href = url.href;
-    })
-    .catch(() => {});
   update();
 }

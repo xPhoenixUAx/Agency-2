@@ -1,5 +1,21 @@
 // One public source of truth. Do not put passwords or mail credentials in site.json.
 const configURL = new URL('../config/site.json', import.meta.url);
+export const siteLinks = Object.freeze({
+  audit: 'audit.html',
+  privacy: 'privacy.html',
+  terms: 'terms.html',
+  cookies: 'cookies.html',
+});
+const pageFiles = [
+  'index.html',
+  'google-ads.html',
+  'tracking-automation.html',
+  'results.html',
+  'audit.html',
+  'privacy.html',
+  'terms.html',
+  'cookies.html',
+];
 const safeLink = (value) => {
   if (typeof value !== 'string' || /[\r\n]/.test(value)) return null;
   try {
@@ -10,8 +26,25 @@ const safeLink = (value) => {
   }
 };
 export function validateConfig(c) {
-  if (!c || typeof c !== 'object') throw new Error('Config must be an object.');
-  for (const key of ['name', 'legalName', 'email', 'address', 'website', 'description', 'logo']) {
+  if (!c || typeof c !== 'object' || Array.isArray(c)) throw new Error('Config must be an object.');
+  c = structuredClone(c);
+  const trim = (value) => {
+    for (const key of Object.keys(value)) {
+      if (typeof value[key] === 'string') value[key] = value[key].trim();
+      else if (value[key] && typeof value[key] === 'object') trim(value[key]);
+    }
+  };
+  trim(c);
+  for (const key of [
+    'name',
+    'legalName',
+    'email',
+    'address',
+    'website',
+    'description',
+    'logo',
+    'favicon',
+  ]) {
     if (typeof c.brand?.[key] !== 'string') throw new Error(`Missing brand.${key}`);
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.brand.email)) throw new Error('Invalid contact email.');
@@ -32,41 +65,80 @@ export function validateConfig(c) {
       )
         throw new Error('Use a valid YYYY-MM-DD date for legal.updatedOn.');
     }
-    if (c.legal.supervisoryAuthorityUrl && !safeLink(c.legal.supervisoryAuthorityUrl))
+    if (
+      c.legal.supervisoryAuthorityUrl &&
+      (!/^https?:\/\//i.test(c.legal.supervisoryAuthorityUrl) ||
+        !safeLink(c.legal.supervisoryAuthorityUrl))
+    )
       throw new Error('Invalid supervisory authority URL.');
   }
-  for (const key of ['primary', 'blue', 'red', 'yellow', 'green', 'ink', 'muted', 'surface']) {
-    if (!/^#[0-9a-f]{6}$/i.test(c.colors?.[key] || '')) throw new Error(`Invalid color: ${key}`);
+  for (const key of [
+    'name',
+    'legalName',
+    'email',
+    'address',
+    'website',
+    'description',
+    'favicon',
+  ]) {
+    if (!c.brand[key].trim()) throw new Error('Empty brand.' + key);
   }
+  for (const key of ['logo', 'favicon']) {
+    if (
+      c.brand[key] &&
+      (!safeLink(c.brand[key]) ||
+        /[\x00-\x20\\]/.test(c.brand[key]) ||
+        c.brand[key].startsWith('//'))
+    )
+      throw new Error('Invalid brand.' + key);
+  }
+  let website;
+  try {
+    website = new URL(c.brand.website);
+  } catch {
+    throw new Error('Enter a full website URL.');
+  }
+  if (
+    !['https:', 'http:'].includes(website.protocol) ||
+    website.username ||
+    website.password ||
+    website.search ||
+    website.hash
+  )
+    throw new Error('Website must be an HTTP(S) base URL without credentials, query or fragment.');
+  for (const page of pageFiles) {
+    if (typeof c.pageTitles?.[page] !== 'string' || !c.pageTitles[page].trim())
+      throw new Error('Missing pageTitles.' + page);
+  }
+  for (const key of ['recipient', 'from', 'subject']) {
+    const value = c.mail?.[key];
+    if (typeof value !== 'string' || /[\r\n]/.test(value)) throw new Error('Invalid mail.' + key);
+    if (key !== 'subject' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+      throw new Error('Invalid mail.' + key);
+  }
+  if (!c.mail.subject.trim()) throw new Error('Enter an email subject.');
   for (const key of ['businessTypes', 'budgets', 'needs']) {
     if (
       !Array.isArray(c.form?.[key]) ||
       !c.form[key].length ||
-      c.form[key].some((x) => typeof x !== 'string' || !x.trim())
+      c.form[key].some(
+        (x) => typeof x !== 'string' || !x.trim() || new TextEncoder().encode(x).length > 100,
+      )
     )
       throw new Error(`Invalid form.${key}`);
   }
-  for (const key of ['heroTitle', 'heroDescription', 'cta', 'submit', 'success', 'footer']) {
-    if (typeof c.content?.[key] !== 'string') throw new Error(`Missing content.${key}`);
+  for (const key of ['heroTitle', 'heroDescription', 'cta', 'trackingCta', 'submit', 'success']) {
+    if (typeof c.content?.[key] !== 'string' || !c.content[key].trim())
+      throw new Error(`Missing content.${key}`);
   }
-  for (const key of ['audit', 'privacy', 'terms']) {
-    if (typeof c.links?.[key] !== 'string' || !safeLink(c.links[key]))
-      throw new Error(`Invalid link: ${key}`);
-  }
-  if (c.links.cookies !== undefined && !safeLink(c.links.cookies))
-    throw new Error('Invalid cookies link.');
-  if (
-    !c.features ||
-    typeof c.features.showIllustrativeCases !== 'boolean' ||
-    typeof c.features.animations !== 'boolean'
-  )
-    throw new Error('Invalid features.');
+  if (!c.form.needs.includes(c.form.trackingNeed))
+    throw new Error('form.trackingNeed must match one of form.needs.');
+  if (typeof c.features?.showIllustrativeCases !== 'boolean')
+    throw new Error('Invalid features.showIllustrativeCases.');
   return c;
 }
 const legalFallbacks = new WeakMap();
 export function applyBrand(c) {
-  for (const [key, value] of Object.entries(c.colors))
-    document.documentElement.style.setProperty(`--${key}`, value);
   document.querySelectorAll('[data-brand]').forEach((el) => {
     const value = c.brand[el.dataset.brand];
     if (typeof value === 'string') el.textContent = value;
@@ -92,7 +164,7 @@ export function applyBrand(c) {
     }
   });
   document.querySelectorAll('[data-link]').forEach((el) => {
-    const href = safeLink(c.links[el.dataset.link]);
+    const href = safeLink(siteLinks[el.dataset.link]);
     if (href) {
       const url = new URL(href);
       if (el.dataset.linkFragment) url.hash = el.dataset.linkFragment;
@@ -100,7 +172,7 @@ export function applyBrand(c) {
     }
   });
   document.querySelectorAll('[data-tracking-link]').forEach((el) => {
-    const href = safeLink(c.links.audit);
+    const href = safeLink(siteLinks.audit);
     if (href) {
       const url = new URL(href);
       url.searchParams.set('need', 'tracking');
@@ -153,20 +225,51 @@ export function applyBrand(c) {
     el.textContent = String(new Date().getFullYear());
   });
   document.querySelectorAll('[data-logo]').forEach((el) => {
+    const fallback = () => {
+      const name = document.createElement('span');
+      name.dataset.brand = 'name';
+      name.textContent = c.brand.name;
+      const dots = document.createElement('span');
+      dots.className = 'brand-dots';
+      dots.setAttribute('aria-hidden', 'true');
+      for (let i = 0; i < 4; i++) dots.append(document.createElement('i'));
+      el.replaceChildren(name, dots);
+    };
     const url = c.brand.logo && safeLink(c.brand.logo);
-    if (url) {
-      const img = document.createElement('img');
-      img.src = url;
-      img.alt = c.brand.name;
-      img.addEventListener(
-        'error',
-        () => {
-          el.textContent = c.brand.name;
-        },
-        { once: true },
-      );
-      el.replaceChildren(img);
+    if (!url) {
+      fallback();
+      return;
     }
+    const current = el.querySelector('img');
+    if (current?.src === url) {
+      current.alt = c.brand.name;
+      if (current.complete && !current.naturalWidth) fallback();
+      else
+        current.addEventListener(
+          'error',
+          () => {
+            if (el.contains(current)) fallback();
+          },
+          { once: true },
+        );
+      return;
+    }
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = c.brand.name;
+    img.addEventListener(
+      'error',
+      () => {
+        if (el.contains(img)) fallback();
+      },
+      { once: true },
+    );
+    el.replaceChildren(img);
+  });
+  document.querySelectorAll('[data-favicon]').forEach((el) => {
+    el.href = safeLink(c.brand.favicon);
+    el.removeAttribute('sizes');
+    el.removeAttribute('type');
   });
   document.querySelectorAll('select[data-options]').forEach((el) => {
     const options = c.form[el.dataset.options];
@@ -176,15 +279,19 @@ export function applyBrand(c) {
   document.querySelectorAll('[data-illustrative]').forEach((el) => {
     el.hidden = !c.features.showIllustrativeCases;
   });
-  document.documentElement.dataset.animations = c.features.animations ? 'on' : 'off';
-  const suffix = document.documentElement.dataset.pageTitle;
-  if (suffix) document.title = `${suffix} | ${c.brand.name}`;
+  document.documentElement.dataset.animations = 'on';
+  const page = document.documentElement.dataset.page;
+  if (c.pageTitles[page]) document.title = `${c.pageTitles[page]} | ${c.brand.name}`;
 }
-export const configReady = fetch(configURL, { cache: 'no-cache' })
-  .then((response) => {
-    if (!response.ok) throw new Error('Cannot load site.json');
-    return response.json();
-  })
+const embeddedConfig = document.querySelector('#site-config');
+export const configReady = (
+  embeddedConfig
+    ? Promise.resolve().then(() => JSON.parse(embeddedConfig.textContent))
+    : fetch(configURL, { cache: 'no-cache' }).then((response) => {
+        if (!response.ok) throw new Error('Cannot load site.json');
+        return response.json();
+      })
+)
   .then(validateConfig)
   .then((c) => {
     applyBrand(c);

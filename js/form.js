@@ -52,9 +52,9 @@ if (form) {
       retry.hidden = true;
       if (
         new URLSearchParams(location.search).get('need') === 'tracking' &&
-        c.form.needs.includes('Tracking & Analytics')
+        c.form.needs.includes(c.form.trackingNeed)
       )
-        form.elements.need.value = 'Tracking & Analytics';
+        form.elements.need.value = c.form.trackingNeed;
       say('');
     } catch {
       say(

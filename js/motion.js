@@ -64,7 +64,7 @@ export function readMotionTokens() {
 export function isMotionAllowed() {
   return Boolean(
     lifetime &&
-    config?.features.animations &&
+    config &&
     !reduced.matches &&
     !document.hidden &&
     typeof Element.prototype.animate === 'function' &&

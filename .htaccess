@@ -1,0 +1,12 @@
+DirectoryIndex index.html
+Options -Indexes
+RewriteEngine On
+
+# Keep the existing public .html URLs while rendering current configuration in PHP.
+RewriteRule ^$ render.php?page=index.html [END]
+RewriteRule ^(index|google-ads|tracking-automation|results|audit|privacy|terms|cookies)\.html$ render.php?page=$1.html [END]
+
+<FilesMatch "^(README\.md|router\.php|site-config\.php)$">
+  Require all denied
+</FilesMatch>
+RewriteRule (^|/)\. - [F]
