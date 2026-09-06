@@ -6,6 +6,7 @@ const status = document.querySelector('[data-filter-status]');
 const empty = document.querySelector('[data-cases-empty]');
 configReady
   .then((config) => {
+    if (!filters || !status || !empty) return;
     const show = config.features.showIllustrativeCases;
     filters.hidden = !show;
     empty.hidden = show;
@@ -32,5 +33,5 @@ configReady
     });
   })
   .catch(() => {
-    filters.hidden = true;
+    if (filters) filters.hidden = true;
   });

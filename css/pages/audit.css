@@ -77,9 +77,6 @@ textarea {
   grid-template-columns: 1fr;
   gap: 8px;
 }
-.retry-session {
-  margin-top: 12px;
-}
 @media (max-width: 1199px) {
   .audit-layout {
     grid-template-columns: 1fr;

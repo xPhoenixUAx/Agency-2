@@ -284,19 +284,25 @@ export function applyBrand(c) {
   if (c.pageTitles[page]) document.title = `${c.pageTitles[page]} | ${c.brand.name}`;
 }
 const embeddedConfig = document.querySelector('#site-config');
-export const configReady = (
-  embeddedConfig
-    ? Promise.resolve().then(() => JSON.parse(embeddedConfig.textContent))
-    : fetch(configURL, { cache: 'no-cache' }).then((response) => {
-        if (!response.ok) throw new Error('Cannot load site.json');
-        return response.json();
+export const configReady =
+  location.protocol === 'file:'
+    ? // Folder preview keeps the HTML defaults; PHP remains the config source on hosting.
+      Promise.resolve({ features: { showIllustrativeCases: true } }).then((config) => {
+        document.documentElement.dataset.animations = 'on';
+        return config;
       })
-)
-  .then(validateConfig)
-  .then((c) => {
-    applyBrand(c);
-    return c;
-  });
+    : (embeddedConfig
+        ? Promise.resolve().then(() => JSON.parse(embeddedConfig.textContent))
+        : fetch(configURL, { cache: 'no-cache' }).then((response) => {
+            if (!response.ok) throw new Error('Cannot load site.json');
+            return response.json();
+          })
+      )
+        .then(validateConfig)
+        .then((c) => {
+          applyBrand(c);
+          return c;
+        });
 configReady.catch(() => {
   document.querySelectorAll('[data-config-error]').forEach((el) => {
     el.hidden = false;
